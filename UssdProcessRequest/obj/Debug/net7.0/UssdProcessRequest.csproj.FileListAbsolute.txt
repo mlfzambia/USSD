@@ -1,0 +1,12 @@
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\UssdProcessRequest.deps.json
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\UssdProcessRequest.dll
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\UssdProcessRequest.pdb
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\UssdProcessRequest.csproj.AssemblyReference.cache
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\UssdProcessRequest.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\UssdProcessRequest.AssemblyInfoInputs.cache
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\UssdProcessRequest.AssemblyInfo.cs
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\UssdProcessRequest.csproj.CoreCompileInputs.cache
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\UssdProcessRequest.dll
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\refint\UssdProcessRequest.dll
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\UssdProcessRequest.pdb
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\ref\UssdProcessRequest.dll
