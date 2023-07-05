@@ -10,3 +10,16 @@ D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\UssdProces
 D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\refint\UssdProcessRequest.dll
 D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\UssdProcessRequest.pdb
 D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\ref\UssdProcessRequest.dll
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\ConnectionLinks.dll
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\ConnectionLinks.pdb
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\obj\Debug\net7.0\UssdProcessRequest.csproj.CopyComplete
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\ModelView.dll
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\ModelView.pdb
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\AllCredentialHolder.dll
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\MtnPaymentProcessing.dll
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\UssdTransaction.dll
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\UssdTransaction.pdb
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\AllCredentialHolder.pdb
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\MtnPaymentProcessing.pdb
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\MusoniRequest.dll
+D:\Project Software\MLFZambiaUssd\UssdProcessRequest\bin\Debug\net7.0\MusoniRequest.pdb

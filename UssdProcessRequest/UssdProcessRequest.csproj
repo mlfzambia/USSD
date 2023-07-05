@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConnectionLinks\ConnectionLinks.csproj" />
+    <ProjectReference Include="..\ModelView\ModelView.csproj" />
+    <ProjectReference Include="..\MusoniRequest\MusoniRequest.csproj" />
+    <ProjectReference Include="..\UssdTransaction\UssdTransaction.csproj" />
+  </ItemGroup>
+
 </Project>

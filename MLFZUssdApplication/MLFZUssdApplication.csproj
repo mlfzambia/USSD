@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\MtnPaymentProcessing\MtnPaymentProcessing.csproj" />
+    <ProjectReference Include="..\MusoniRequest\MusoniRequest.csproj" />
+    <ProjectReference Include="..\UssdProcessRequest\UssdProcessRequest.csproj" />
   </ItemGroup>
 
 </Project>

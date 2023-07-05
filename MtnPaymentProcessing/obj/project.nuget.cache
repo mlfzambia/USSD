@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "zK7RqgZqOnZjqbtDeu8BzxH49y7RDZwcII+vKMXyJ+ykr7iDMtJ/aQsgL4W0dMo1xb2wNc6Z59z+QwYBtw0NeQ==",
+  "success": true,
+  "projectFilePath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\telek\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
