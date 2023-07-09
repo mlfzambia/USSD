@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "fe//faL5Lm1E+NL8UV/Vj+86EWgGY4p5SflDpzQStM8KRuEZdjIbUf5SgNJzBwm6UdyFKJDZe3rw2A2847Rmtw==",
+  "success": true,
+  "projectFilePath": "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\telek\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

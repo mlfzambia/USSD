@@ -13,12 +13,34 @@ namespace UssdTransaction
 
         //Register transaction
 
-        public async Task<ModelView.PaymentTransactionMV.PaymentResponse> ITransactionRegistration(string Clientaccount, string PhoneNumber,  int ServiceProvider,
-            int TransactionStatus)
+        public async Task<ModelView.PaymentTransactionMV.PaymentResponse> ITransactionRegistration(string Clientaccount, string PhoneNumber, int ServiceProvider, decimal Amount, string LoanType)
         {
-            var RegistrationResponse = await Task.Run(() => TrxClient.TransactionRegistration(Clientaccount, PhoneNumber,  ServiceProvider, TransactionStatus));
+            var RegistrationResponse = await Task.Run(() => TrxClient.TransactionRegistration(Clientaccount, PhoneNumber, ServiceProvider, Amount, LoanType));
             return RegistrationResponse;
         }
 
+
+        public async Task<ModelView.GenralResponseMV.AllGenralResponse> IAddSessionBalance(string SessionId, string ProductId, string ProductName, decimal Amount, int ClientOptionId, string ClientLoanId)
+        {
+            var AddSessionAmount = await Task.Run(() => TrxClient.AddSessionBalance(SessionId, ProductId, ProductName, Amount, ClientOptionId, ClientLoanId));
+            return AddSessionAmount;
+        }
+
+        //Update client account number
+        public async Task<ModelView.GenralResponseMV.AllGenralResponse> IUpdateAccountNumber(string Clientaccount, string SessionId, string AccountHolderName)
+        {
+            var UpdateAccountnumberResponse = await Task.Run(() => TrxClient.UpdateAccountNumber(Clientaccount, SessionId, AccountHolderName));
+            return UpdateAccountnumberResponse;
+        }
+
+        //Complete Payment transaction
+        public async void ICompleteLoanPayment(string SessionId, decimal PaidLoanAmount)
+        {
+            await Task.Run(() => TrxClient.CompleteLoanPayment(SessionId, PaidLoanAmount));
+            //  return UpdateAccountnumberResponse;
+        }
+
+
+        //
     }
 }

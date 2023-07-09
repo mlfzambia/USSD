@@ -9,13 +9,17 @@ namespace ModelView
     public class SannyResponseMV
     {
         //Musoni Response Details From Musoni
+       
         public class SearchResponse
         {
             public string entityId { get; set; }
+            public string entityAccountNo { get; set; }
+            public string entityExternalId { get; set; }
             public string entityName { get; set; }
             public string entityType { get; set; }
             public string parentId { get; set; }
             public string parentName { get; set; }
+            public string entityMobileNo { get; set; }
             public Entity entityStatus { get; set; }
             public string groupId { get; set; }
             public string groupName { get; set; }
@@ -149,14 +153,20 @@ namespace ModelView
 
         //Musoni Summar Balance Response
 
+        public class ClientLoanBalanceMainDetailResponse
+        {
+            public string statusCode { get; set; }
+            public string notification { get; set; }
+            public List<ClientLoanBalanceSummary> loanDetails { get; set; }
+        }
+
         public class ClientLoanBalanceSummary
         {
-            string id { get; set; }
-            string accountNo { get; set; }
-            string productName { get; set; }
-            decimal originalAmount { get; set; }
-            decimal loanBalace { get; set; }
-            decimal amountPaid { get; set; }
+            public string id { get; set; }
+            public string accountNo { get; set; }
+            public string productName { get; set; }
+            public decimal loanBalace { get; set; }
+            public string productId { get; set; }
 
 
         }

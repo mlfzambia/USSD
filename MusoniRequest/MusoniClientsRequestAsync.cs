@@ -17,7 +17,7 @@ namespace MusoniRequest
 
         }
 
-        public async Task<string> IGetClientAccountBalance(string Phonenumber)
+        public async Task<ModelView.SannyResponseMV.ClientLoanBalanceMainDetailResponse> IGetClientAccountBalance(string Phonenumber)
         {
             var Mu_SearchClientBalance = await Task.Run(() => CR_Client.GetClientAccountBalance(Phonenumber));
             return Mu_SearchClientBalance;

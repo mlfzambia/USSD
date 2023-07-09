@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MusoniRequest
 {
-   interface IMusoniClientsRequest
+    interface IMusoniClientsRequest
     {
         Task<ModelView.SannyResponseMV.SearchDetailsResponse> IMusoniClientDetails(string Phonenumber);
 
-        Task<string> IGetClientAccountBalance(string Phonenumber);
+        Task<ModelView.SannyResponseMV.ClientLoanBalanceMainDetailResponse> IGetClientAccountBalance(string Phonenumber);
 
     }
 }

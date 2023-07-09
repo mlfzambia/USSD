@@ -25,6 +25,9 @@
         }
       },
       "AllCredentialHolder/1.0.0": {
+        "dependencies": {
+          "ModelView": "1.0.0"
+        },
         "runtime": {
           "AllCredentialHolder.dll": {}
         }

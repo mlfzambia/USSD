@@ -8,12 +8,14 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AllCredentialHolder\AllCredentialHolder.csproj" />
     <ProjectReference Include="..\ConnectionLinks\ConnectionLinks.csproj" />
     <ProjectReference Include="..\ModelView\ModelView.csproj" />
+    <ProjectReference Include="..\MtnPaymentProcessing\MtnPaymentProcessing.csproj" />
   </ItemGroup>
 
 </Project>

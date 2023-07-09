@@ -149,6 +149,9 @@
         }
       },
       "AllCredentialHolder/1.0.0": {
+        "dependencies": {
+          "ModelView": "1.0.0"
+        },
         "runtime": {
           "AllCredentialHolder.dll": {}
         }
@@ -183,10 +186,21 @@
           "AllCredentialHolder": "1.0.0",
           "ConnectionLinks": "1.0.0",
           "ModelView": "1.0.0",
-          "Newtonsoft.Json": "13.0.3"
+          "MtnPaymentProcessing": "1.0.0",
+          "Newtonsoft.Json": "13.0.3",
+          "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {
           "MusoniRequest.dll": {}
+        }
+      },
+      "SmsNotification/1.0.0": {
+        "dependencies": {
+          "AllCredentialHolder": "1.0.0",
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "SmsNotification.dll": {}
         }
       },
       "UssdProcessRequest/1.0.0": {
@@ -205,6 +219,7 @@
         "dependencies": {
           "ConnectionLinks": "1.0.0",
           "MtnPaymentProcessing": "1.0.0",
+          "SmsNotification": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {
@@ -380,6 +395,11 @@
       "sha512": ""
     },
     "MusoniRequest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SmsNotification/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

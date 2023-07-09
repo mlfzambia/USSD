@@ -10,6 +10,7 @@
         "dependencies": {
           "ConnectionLinks": "1.0.0",
           "MtnPaymentProcessing": "1.0.0",
+          "SmsNotification": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {
@@ -199,6 +200,9 @@
         }
       },
       "AllCredentialHolder/1.0.0": {
+        "dependencies": {
+          "ModelView": "1.0.0"
+        },
         "runtime": {
           "AllCredentialHolder.dll": {}
         }
@@ -226,6 +230,15 @@
         },
         "runtime": {
           "MtnPaymentProcessing.dll": {}
+        }
+      },
+      "SmsNotification/1.0.0": {
+        "dependencies": {
+          "AllCredentialHolder": "1.0.0",
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "SmsNotification.dll": {}
         }
       }
     }
@@ -392,6 +405,11 @@
       "sha512": ""
     },
     "MtnPaymentProcessing/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SmsNotification/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

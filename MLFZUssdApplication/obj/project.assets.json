@@ -361,6 +361,9 @@
       "AllCredentialHolder/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "ModelView": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/AllCredentialHolder.dll": {}
         },
@@ -415,13 +418,29 @@
           "AllCredentialHolder": "1.0.0",
           "ConnectionLinks": "1.0.0",
           "ModelView": "1.0.0",
-          "Newtonsoft.Json": "13.0.3"
+          "MtnPaymentProcessing": "1.0.0",
+          "Newtonsoft.Json": "13.0.3",
+          "System.Data.SqlClient": "4.8.5"
         },
         "compile": {
           "bin/placeholder/MusoniRequest.dll": {}
         },
         "runtime": {
           "bin/placeholder/MusoniRequest.dll": {}
+        }
+      },
+      "SmsNotification/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "AllCredentialHolder": "1.0.0",
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "bin/placeholder/SmsNotification.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SmsNotification.dll": {}
         }
       },
       "UssdProcessRequest/1.0.0": {
@@ -447,6 +466,7 @@
         "dependencies": {
           "ConnectionLinks": "1.0.0",
           "MtnPaymentProcessing": "1.0.0",
+          "SmsNotification": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "compile": {
@@ -1146,6 +1166,11 @@
       "type": "project",
       "path": "../MusoniRequest/MusoniRequest.csproj",
       "msbuildProject": "../MusoniRequest/MusoniRequest.csproj"
+    },
+    "SmsNotification/1.0.0": {
+      "type": "project",
+      "path": "../SmsNotification/SmsNotification.csproj",
+      "msbuildProject": "../SmsNotification/SmsNotification.csproj"
     },
     "UssdProcessRequest/1.0.0": {
       "type": "project",

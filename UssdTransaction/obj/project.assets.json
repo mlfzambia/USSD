@@ -361,6 +361,9 @@
       "AllCredentialHolder/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "ModelView": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/AllCredentialHolder.dll": {}
         },
@@ -406,6 +409,20 @@
         },
         "runtime": {
           "bin/placeholder/MtnPaymentProcessing.dll": {}
+        }
+      },
+      "SmsNotification/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "AllCredentialHolder": "1.0.0",
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "bin/placeholder/SmsNotification.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SmsNotification.dll": {}
         }
       }
     }
@@ -1093,12 +1110,18 @@
       "type": "project",
       "path": "../MtnPaymentProcessing/MtnPaymentProcessing.csproj",
       "msbuildProject": "../MtnPaymentProcessing/MtnPaymentProcessing.csproj"
+    },
+    "SmsNotification/1.0.0": {
+      "type": "project",
+      "path": "../SmsNotification/SmsNotification.csproj",
+      "msbuildProject": "../SmsNotification/SmsNotification.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "ConnectionLinks >= 1.0.0",
       "MtnPaymentProcessing >= 1.0.0",
+      "SmsNotification >= 1.0.0",
       "System.Data.SqlClient >= 4.8.5"
     ]
   },
@@ -1140,6 +1163,9 @@
             },
             "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
               "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj"
+            },
+            "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj": {
+              "projectPath": "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj"
             }
           }
         }

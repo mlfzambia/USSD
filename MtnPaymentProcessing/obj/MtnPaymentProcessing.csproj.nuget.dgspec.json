@@ -32,7 +32,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj": {
+                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

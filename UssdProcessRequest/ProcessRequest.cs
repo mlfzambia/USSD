@@ -17,32 +17,32 @@ namespace UssdProcessRequest
 
         ConnectionLinks.LinkDetails ConnectionInfor = new ConnectionLinks.LinkDetails();
         ModelView.GenralResponseMV.AllGenralResponse GenralResponse = new ModelView.GenralResponseMV.AllGenralResponse();
-
+        AllCredentialHolder.QuickRefHolder RHClientHOlder = new AllCredentialHolder.QuickRefHolder();
         UssdTransaction.UssdTransactionAsync Ussd_Trx_Client = new UssdTransaction.UssdTransactionAsync();
 
 
 
         internal async Task<string> UssdRequestDetails(int IsNewRequest, string MsisdnNumber, string SessionId, string ClientInput)
         {
-
             SqlConnection UR_App_Con = new SqlConnection(ConnectionInfor.localConnectionDatabase());
             string UssdStylesResponse = null;
 
             try
             {
-
-
                 //New Client request 
                 if (IsNewRequest == 1)
                 {
+                    //Unique ID
+                    string Uuid_Holder = await Task.Run(() => RHClientHOlder.UuidGenerented());
+
                     //Register The Current Ussd Transaction
 
-                    string UssdRegistration = "Insert Into UssdTransactionSession(ui_SessionId,ui_Msisdn,ui_page) Values (@SessionId,@Msisdn,@pageNo)";
+                    string UssdRegistration = "Insert Into UssdTransactionSession(ui_SessionId,ui_Msisdn,ui_page,uiUniqIdentity) Values (@SessionId,@Msisdn,@pageNo,@UniqIdentity)";
                     SqlCommand UR_App_CM = new SqlCommand(UssdRegistration, UR_App_Con);
                     UR_App_CM.Parameters.Add("@SessionId", SqlDbType.NVarChar).Value = SessionId;
                     UR_App_CM.Parameters.Add("@Msisdn", SqlDbType.NVarChar).Value = MsisdnNumber;
-                    UR_App_CM.Parameters.Add("@pageNo", SqlDbType.NVarChar).Value = 0;
-
+                    UR_App_CM.Parameters.Add("@pageNo", SqlDbType.Int).Value = 0;
+                    UR_App_CM.Parameters.Add("@UniqIdentity", SqlDbType.NVarChar).Value = Uuid_Holder;
 
                     //Check database Connection 
                     if (UR_App_Con.State == ConnectionState.Closed)
@@ -71,7 +71,6 @@ namespace UssdProcessRequest
                     int InitialSelectedPage;
                     //Selected Menu
 
-
                     //Get Client Ussd Process
                     string ClientStepsQuery = "Select ui_Msisdn,ui_LoginStatus,ui_Page,ui_Selected_Option,ui_Selected_Option1,ui_Selected_Option2,ui_Selected_Option3,ui_Selected_Option4 from [UssdTransactionSession](nolock) Where ui_SessionId = @sessionId";
                     SqlCommand CS_App_CM = new SqlCommand(ClientStepsQuery, UR_App_Con);
@@ -91,7 +90,6 @@ namespace UssdProcessRequest
                     //Current Main Page
                     int MainPageSelection = Convert.ToInt16(UR_App_DS.Tables["UR"].Rows[0]["ui_Page"]);
 
-
                     switch (MainPageSelection)
                     {
                         case 0:
@@ -102,19 +100,17 @@ namespace UssdProcessRequest
                                 UssdStylesResponse = "Please enter your account";
                                 //Update Client Page Slection
                                 //Show Page One Which is Enter Account
-                                await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "1", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString()));
+                                await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "1", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", DBNull.Value.ToString()));
 
                             }
                             else if (ClientInput == "2") //Selected Page Two
                             {
                                 UssdStylesResponse = "Registration coming soon.";
-
                             }
                             else
                             {
                                 UssdStylesResponse = "Selected Input is invalied";
                             }
-
                             break;
 
                         case 1:
@@ -123,82 +119,119 @@ namespace UssdProcessRequest
 
                             if (OptionSelected == 1)
                             {
-                                var VerificationResponse = await Task.Run(() => RequestClientDetails(ClientInput));
+                                MusoniRequest.MusoniClientsRequestAsync ClientRequest = new MusoniRequest.MusoniClientsRequestAsync();
+                                ModelView.SannyResponseMV.DetailsHeld SearchDetails = null;
 
-                                UssdStylesResponse = "Hi, " + VerificationResponse.parentName;
-                                
-                                await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "2", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString()));
+                                //Getting the client details from musoni database
+                                var ResponseDetails = await Task.Run(() => ClientRequest.IMusoniClientDetails(ClientInput));
+                                string statusCode = ResponseDetails.statusCode;
+                                string notification = ResponseDetails.notification;
 
+                                if (statusCode == "OT001") 
+                                { //Get client names
 
+                                    //Client Id Request
+                                    string ParentId = ResponseDetails.holder.parentId;
+                                    string OwnerAccName = ResponseDetails.holder.parentName;
 
+                                    //REquest Client loan balances
+                                    //var VerificationResponse = await Task.Run(() => RequestClientDetails(ParentId));
+                                    //UssdStylesResponse = "Hi, " + VerificationResponse.parentName;
 
-                                //Verify Client Account Number
-                                //var VerificationResponse = await Task.Run(() => RequestClientDetails(ClientInput));
-                                //string StatusCode = VerificationResponse.statusCode;
-                                //string notification = VerificationResponse.notification;
+                                    //Get client loan balance
+                                    var ClientBalanceResponse = await Task.Run(() => ClientRequest.IGetClientAccountBalance(ParentId));
+                                    string _StatusCode = ClientBalanceResponse.statusCode;
+                                    string _notification = ClientBalanceResponse.notification;
+                                    string _ClientAccountHolder = ResponseDetails.holder.parentName;
 
-                                //if (StatusCode == "OT001")
-                                //{
-                                //    var ClientResponseDetails = VerificationResponse.details;
-                                //    int ClientLoansCount = ClientResponseDetails.Count;
+                                    if (statusCode == "OT001")
+                                    {
+                                        StringBuilder _sbResponseDetail = new StringBuilder();
+                                        int cbCount = ClientBalanceResponse.loanDetails.Count();
+                                        _sbResponseDetail.Append("Hi, " + _ClientAccountHolder + "\n");
 
-                                //    StringBuilder NotificationHolder = new StringBuilder();
-                                //    int OptCount = 0;
+                                        for (int i = 0; i <= cbCount - 1; i++)
+                                        {
+                                            int rowcount = 1 + i;
+                                            string LoanTypes = ClientBalanceResponse.loanDetails[i].productName;
+                                            decimal _loanCurrentBalance = 0;
 
-                                //    if (ClientLoansCount >= 1)
-                                //    {
-                                //        for (int i = 0; i <= ClientLoansCount - 1; i++)
-                                //        {
-                                //            OptCount = OptCount + 1;
-                                //            NotificationHolder.Append(OptCount + "." + ClientResponseDetails[i].loanTypeName.ToString() + " (" + ClientResponseDetails[i].amount.ToString() + ")\n");
-                                //        }
+                                            if (LoanTypes.ToUpper() == "SDL")
+                                            {
+                                                string LoanBalanceType = "Business Loan - ";
+                                                _loanCurrentBalance = Math.Round(ClientBalanceResponse.loanDetails[i].loanBalace);
+                                                _sbResponseDetail.Append(rowcount + ". " + LoanBalanceType + "Bal :K " + _loanCurrentBalance + "\n");
 
-                                //        UssdStylesResponse = "Hi, " + ClientResponseDetails[0].accountName.ToString() + "\n" +
-                                //            "" + NotificationHolder.ToString();
+                                                string ProductId = ClientBalanceResponse.loanDetails[i].productId;
 
-                                //        await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "2", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString()));
+                                                //Update the System with what loan this is
+                                                await Task.Run(() => Ussd_Trx_Client.IAddSessionBalance(SessionId, LoanTypes, LoanBalanceType, _loanCurrentBalance, rowcount, ProductId));
 
-                                //    }
-                                //}
-                                //else
-                                //{
-                                //    UssdStylesResponse = "Wrong account.\n" +
-                                //        "Please enter your account";
-                                //    //Update Client Page Slection
-                                //    await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "1", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString()));
+                                            }
+                                            else if (LoanTypes.ToUpper() == "TIL")
+                                            {
+                                                string LoanBalanceType = "Tilime Loan - ";
+                                                _loanCurrentBalance = Math.Round(ClientBalanceResponse.loanDetails[i].loanBalace);
+                                                _sbResponseDetail.Append(rowcount + ". " + LoanBalanceType + "Bal :K " + _loanCurrentBalance + "\n");
 
-                                //}
+                                                string ProductId = ClientBalanceResponse.loanDetails[i].productId;
 
+                                                //Update the system with what loan this is
+                                                await Task.Run(() => Ussd_Trx_Client.IAddSessionBalance(SessionId, LoanTypes, LoanBalanceType, _loanCurrentBalance, rowcount, ProductId));
+                                            }
 
+                                        }
+                                        UssdStylesResponse = _sbResponseDetail.ToString();
+                                        //Update Client Page Slection
+                                        await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "2", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", DBNull.Value.ToString()));
+
+                                        //Update Client Account
+                                        await Task.Run(() => Ussd_Trx_Client.IUpdateAccountNumber(ClientInput, SessionId, _ClientAccountHolder));
+
+                                    }
+                                    else
+                                    {
+                                        UssdStylesResponse = "You dont have any active loan";
+                                    }
+                                }
+                                else
+                                {
+                                    UssdStylesResponse = "Wrong account.\n" +
+                                        "Please enter your account again";
+                                    //Update Client Page Slection
+                                    await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "1", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", DBNull.Value.ToString()));
+                                }
                             }
                             else if (OptionSelected == 2)
                             {
                                 if (ClientInput == "1")
                                 {
-                                    UssdStylesResponse = "Enter your business loan Amount";
+                                    UssdStylesResponse = "Enter loan Amount";
 
                                     //Update client stage to entering amount
-                                    await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "3", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString()));
+                                    await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "3", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", ClientInput));
 
                                 }
                                 else if (ClientInput == "2")
                                 {
-                                    UssdStylesResponse = "Enter your Agriculture loan Amount";
+                                    UssdStylesResponse = "Enter loan Amount";
 
                                     //Update client stage to entering amount
-                                    await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "3", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString()));
+                                    await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "3", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", "1"));
 
                                 }
-
-
-
                             }
                             else if (OptionSelected == 3)
                             {
+
+                                decimal EnteredAmount = Convert.ToDecimal(ClientInput);
                                 //Process completed
                                 UssdStylesResponse = "end\n Shortly you will receice a prompt to enter your MoMo PIN";
 
+                                //await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "4", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", "1"));
 
+
+                                Ussd_Trx_Client.ICompleteLoanPayment(SessionId, EnteredAmount);
 
                                 // Ussd_Trx_Client.ITransactionRegistration()
                             }
@@ -215,6 +248,10 @@ namespace UssdProcessRequest
                     }
 
                 }
+                else
+                {
+                    UssdStylesResponse = "Error session";
+                }
             }
             catch (Exception ex)
             {
@@ -226,13 +263,13 @@ namespace UssdProcessRequest
 
         #region Add Ussd Transaction details
 
-        private ModelView.GenralResponseMV.AllGenralResponse RecordInitialTransaction(string _sessionId, string msisdn, int SelectedPage, string OptionPages, string Opt1, string Opt2, string Opt3, string Opt4)
+        private ModelView.GenralResponseMV.AllGenralResponse RecordInitialTransaction(string _sessionId, string msisdn, int SelectedPage, string OptionPages, string Opt1, string Opt2, string Opt3, string Opt4, string amount, string ClientOptionSeleccted)
         {
             SqlConnection RI_App_Con = new SqlConnection(ConnectionInfor.localConnectionDatabase());
 
             try
             {
-                string RI_Initial_Transaction_Query = "Update  [UssdTransactionSession] set  ui_Msisdn=@Msisdn ,ui_Page=@Page ,ui_Selected_Option=@optionalPages,ui_Selected_Option1=@opt1,ui_Selected_Option2=@opt2,ui_Selected_Option3=@opt3,ui_Selected_Option4=@opt4 Where ui_SessionId=@SessionId";
+                string RI_Initial_Transaction_Query = "Update  [UssdTransactionSession] set  ui_Msisdn=@Msisdn ,ui_Page=@Page ,ui_Selected_Option=@optionalPages,ui_Selected_Option1=@opt1,ui_Selected_Option2=@opt2,ui_Selected_Option3=@opt3,ui_Selected_Option4=@opt4,uiClientOptionSeleccted=@uiClientOptionSeleccted, paymentAmount=@amount Where ui_SessionId=@SessionId";
                 SqlCommand RI_App_CM = new SqlCommand(RI_Initial_Transaction_Query, RI_App_Con);
                 RI_App_CM.Parameters.Add("@SessionId", SqlDbType.NVarChar).Value = _sessionId;
                 RI_App_CM.Parameters.Add("@Msisdn", SqlDbType.NVarChar).Value = msisdn;
@@ -243,6 +280,10 @@ namespace UssdProcessRequest
                 RI_App_CM.Parameters.Add("@opt2", SqlDbType.NVarChar).Value = Opt2;
                 RI_App_CM.Parameters.Add("@opt3", SqlDbType.NVarChar).Value = Opt3;
                 RI_App_CM.Parameters.Add("@opt4", SqlDbType.NVarChar).Value = Opt4;
+
+                RI_App_CM.Parameters.Add("@amount", SqlDbType.Decimal).Value = amount;
+                RI_App_CM.Parameters.Add("@uiClientOptionSeleccted", SqlDbType.NVarChar).Value = ClientOptionSeleccted;
+
 
 
                 if (RI_App_Con.State == ConnectionState.Closed)
@@ -283,34 +324,7 @@ namespace UssdProcessRequest
             return GenralResponse;
         }
 
-        //Connecting to Sanny
-        private async Task< ModelView.SannyResponseMV.DetailsHeld> RequestClientDetails(string PhoneNumber)
-        {
-            MusoniRequest.MusoniClientsRequestAsync ClientRequest = new MusoniRequest.MusoniClientsRequestAsync();
 
-            ModelView.SannyResponseMV.DetailsHeld SearchDetails = null;
-
-
-            var ResponseDetails = await Task.Run(() => ClientRequest.IMusoniClientDetails(PhoneNumber));
-
-            string statusCode = ResponseDetails.statusCode;
-            string notification = ResponseDetails.notification;
-
-            if (statusCode == "OT001")
-            {
-                SearchDetails = new ModelView.SannyResponseMV.DetailsHeld()
-                {
-                    parentName = ResponseDetails.holder.parentName,
-                    parentAccountNo = ResponseDetails.holder.parentAccountNo,
-                    entityName = ResponseDetails.holder.entityName
-                };
-            }
-         
-            return SearchDetails;
-
-
-
-        }
 
         #endregion
     }

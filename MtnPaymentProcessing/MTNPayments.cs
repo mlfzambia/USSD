@@ -178,9 +178,12 @@ namespace MtnPaymentProcessing
             return CMMsisdnClient;
         }
 
-        public async Task<ModelView.GenralResponseMV.AllGenralResponse> Request_To_Pay(string amount, string narration, string phonenumber)
+
+
+        //MTN Request to pay transaction
+        public async Task<ModelView.GenralResponseMV.AnySingelAllGenralResponse> Request_To_Pay(decimal amount, string narration, string phonenumber,string TransactionUuid)
         {
-            ModelView.GenralResponseMV.AllGenralResponse General_Response_client = null;
+            ModelView.GenralResponseMV.AnySingelAllGenralResponse General_Response_client = null;
 
             AllCredentialHolder.CreadentialHolder.MTN_Credentials _credentialsHolder = new AllCredentialHolder.CreadentialHolder.MTN_Credentials();
             ModelView.MTNModelview.RequestToPay RequestPaymentClient = null;
@@ -206,7 +209,7 @@ namespace MtnPaymentProcessing
                     string Currency = _credentialsHolder.Currency;
 
                     //Generate Uuid
-                    string TransactionUuid = await Task.Run(() => Ref_Client.UuidGenerented());
+                    //string TransactionUuid = await Task.Run(() => Ref_Client.UuidGenerented());
 
                     HP_Client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Aut_Keys_Holder);
                     HP_Client.DefaultRequestHeaders.Add("X-Reference-Id", TransactionUuid);
@@ -215,7 +218,7 @@ namespace MtnPaymentProcessing
 
                     ModelView.MTNModelview.RequestToPay PaymentRequest = new ModelView.MTNModelview.RequestToPay()
                     {
-                        amount = amount,
+                        amount = amount.ToString(),
                         currency = Currency,
                         externalId = TransactionUuid,
                         payeeNote = narration,
@@ -233,26 +236,27 @@ namespace MtnPaymentProcessing
                     if (RequestPayloadResponse.StatusCode == HttpStatusCode.Accepted)
                     {
                         var RequestPayContent = RequestPayloadResponse.Content.ReadAsStringAsync().Result;
-                        var PayloadDesrContent = JsonConvert.DeserializeObject<ModelView.GenralResponseMV.AllGenralResponse>(RequestPayContent);
+                        var PayloadDesrContent = JsonConvert.DeserializeObject<ModelView.GenralResponseMV.AnySingelAllGenralResponse>(RequestPayContent);
 
-                        General_Response_client = new ModelView.GenralResponseMV.AllGenralResponse()
+                        General_Response_client = new ModelView.GenralResponseMV.AnySingelAllGenralResponse()
                         {
                             statusCode = "OT001",
-                            notification = "Transaction registered"
+                            notification = "Transaction registered",
+                              responseValue = TransactionUuid
                         };
                     }
                     else
                     {
-                        General_Response_client = new ModelView.GenralResponseMV.AllGenralResponse()
+                        General_Response_client = new ModelView.GenralResponseMV.AnySingelAllGenralResponse()
                         {
-                            statusCode = "OT001",
+                            statusCode = "OT002",
                             notification = "Transaction registration failed"
                         };
                     }
                 }
                 else
                 {
-                    General_Response_client = new ModelView.GenralResponseMV.AllGenralResponse()
+                    General_Response_client = new ModelView.GenralResponseMV.AnySingelAllGenralResponse()
                     {
                         statusCode = "OT002",
                         notification = "Token generation failed"
@@ -262,7 +266,7 @@ namespace MtnPaymentProcessing
             }
             catch (Exception Ex)
             {
-                General_Response_client = new ModelView.GenralResponseMV.AllGenralResponse()
+                General_Response_client = new ModelView.GenralResponseMV.AnySingelAllGenralResponse()
                 {
                     statusCode = "OT099",
                     notification = "System error, contact system administrator"
@@ -272,6 +276,8 @@ namespace MtnPaymentProcessing
             return General_Response_client;
         }
 
+
+        //MTN Verify the transaction is comlpeted
         public async Task<ModelView.MTNModelview.MtnPaymentVerificationResponse> Request_To_Pay_Transaction_Status(string Trx_Ref_Id)
         {
             ModelView.MTNModelview.MtnPaymentVerificationResponse Mtn_Verification_Response = null;

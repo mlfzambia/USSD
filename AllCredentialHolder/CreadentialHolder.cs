@@ -2,6 +2,11 @@
 {
     public class CreadentialHolder
     {
+        public class SmsDetails
+        {
+            public string SmsGatewayDomain = "http://102.68.138.7:9900/";
+
+        }
 
         public class MTN_Credentials
         {
@@ -14,7 +19,7 @@
 
 
             public string MtnDomainUrl = "https://sandbox.momodeveloper.mtn.com/";
-            
+
 
             #endregion
 
