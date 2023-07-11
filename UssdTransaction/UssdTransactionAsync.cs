@@ -13,9 +13,9 @@ namespace UssdTransaction
 
         //Register transaction
 
-        public async Task<ModelView.PaymentTransactionMV.PaymentResponse> ITransactionRegistration(string Clientaccount, string PhoneNumber, int ServiceProvider, decimal Amount, string LoanType)
+        public async Task<ModelView.PaymentTransactionMV.PaymentResponse> ITransactionRegistration(string Clientaccount, string PhoneNumber, int ServiceProvider, decimal Amount, string LoanType, string ClientLoanId)
         {
-            var RegistrationResponse = await Task.Run(() => TrxClient.TransactionRegistration(Clientaccount, PhoneNumber, ServiceProvider, Amount, LoanType));
+            var RegistrationResponse = await Task.Run(() => TrxClient.TransactionRegistration(Clientaccount, PhoneNumber, ServiceProvider, Amount, LoanType,  ClientLoanId));
             return RegistrationResponse;
         }
 

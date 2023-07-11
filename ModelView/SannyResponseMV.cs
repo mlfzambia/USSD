@@ -9,7 +9,7 @@ namespace ModelView
     public class SannyResponseMV
     {
         //Musoni Response Details From Musoni
-       
+
         public class SearchResponse
         {
             public string entityId { get; set; }
@@ -170,6 +170,64 @@ namespace ModelView
 
 
         }
+
+        //Musoni Payment 
+        public class LoanRepaymentDetails
+        {
+            public string dateFormat { get; set; }
+            public string locale { get; set; }
+            public string transactionDate { get; set; }
+            public decimal transactionAmount { get; set; }
+            public string paymentTypeId { get; set; }
+            public string note { get; set; }
+            public string accountNumber { get; set; }
+            public string checkNumber { get; set; }
+            public string routingCode { get; set; }
+            public string receiptNumber { get; set; }
+            public string bankNumber { get; set; }
+        }
+
+        //Musoni Payment Pending Approval
+        public class loanPendingApprovalResponse
+        {
+            public string statusCode { get; set; }
+            public string notification { get; set; }
+            public LoanPendingApproval approvalStatus { get; set; }
+
+        }
+
+        public class LoanPendingApproval
+        {
+            public string commandId { get; set; }
+            public string resourceId { get; set; }
+            public string rollbackTransaction { get; set; }
+        }
+
+
+        //Auto Auth Transaction
+
+        //    public class LoanAuthDetails
+        //    {
+        //          "commandId": 3587987,
+        //"officeId": 10,
+        //"clientId": 69442,
+        //"loanId": 178827,
+        //"resourceId": 5381948,
+        //"changes": {
+        //    "transactionDate": [
+        //        2023,
+        //        7,
+        //        10
+        //    ],
+        //    "transactionAmount": 45.0,
+        //    "locale": "en",
+        //    "dateFormat": "dd MMMM yyyy",
+        //    "paymentTypeId": 230,
+        //    "isLoanPrepayment": false,
+        //    "note": "Check payment"
+        //},
+        //"loanTransactionId": 5381948
+        //    }
 
     }
 

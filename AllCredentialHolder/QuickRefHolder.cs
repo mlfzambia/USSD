@@ -18,6 +18,7 @@ namespace AllCredentialHolder
 
         }
 
+       
 
         public string BaseEncryption(string UserAuthDetails)
         {

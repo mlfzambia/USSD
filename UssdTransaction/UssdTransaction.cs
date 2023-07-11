@@ -14,15 +14,98 @@ namespace UssdTransaction
         ConnectionLinks.LinkDetails DatabaseConnection = new ConnectionLinks.LinkDetails();
         AllCredentialHolder.QuickRefHolder _quickDetailHolder = new AllCredentialHolder.QuickRefHolder();
         SmsNotification.Notification Sms_Notification_Client = new SmsNotification.Notification();
+        MusoniRequest.MusoniClientsRequestAsync MosoniClient = new MusoniRequest.MusoniClientsRequestAsync();
+        // ModelView.GenralResponseMV.AnySingelAllGenralResponse AllGeneralResponse = null;
 
 
+        //Generate Receipt Number
+        public ModelView.GenralResponseMV.AnySingelAllGenralResponse NewReceiptNumGenerator(string LoanId)
+        {
+            SqlConnection RNG_App_Con = new SqlConnection(DatabaseConnection.localConnectionDatabase());
+            ModelView.GenralResponseMV.AnySingelAllGenralResponse AllGeneralResponse = null;
 
-        //public AllCredentialHolder.QuickRefHolder _quickDetailHolder { get; set; }
+            try
+            {
+                //Get current Number 
+                string CurrentReceiptNum = "Select receiptNumber from ReceiptNumberHolder(nolock)";
+                SqlCommand CR_App_CM = new SqlCommand(CurrentReceiptNum, RNG_App_Con);
+                if (RNG_App_Con.State == ConnectionState.Closed)
+                {
+                    RNG_App_Con.Open(); //Open Database
+                }
 
+                SqlDataAdapter CR_App_DA = new SqlDataAdapter(CR_App_CM);
+                DataSet CR_App_DS = new DataSet();
+                CR_App_DA.Fill(CR_App_DS, "CR");
+
+                int _crCount = CR_App_DS.Tables["CR"].Rows.Count;
+
+                if (_crCount >= 1)
+                {
+                    string CurrentReceiptNumber = CR_App_DS.Tables["CR"].Rows[0]["receiptNumber"].ToString();
+                    int NewReceiptNumber = Convert.ToInt32(CurrentReceiptNumber) + 1;
+
+                    //Update the Receipt Table
+                    string UpdateCurrentReceiptNum = "Update ReceiptNumberHolder  set receiptNumber =@ReceiptNum";
+                    CR_App_CM = new SqlCommand(UpdateCurrentReceiptNum, RNG_App_Con);
+                    CR_App_CM.Parameters.Add("@ReceiptNum", SqlDbType.NVarChar).Value = NewReceiptNumber;
+
+                    int _updateCount = CR_App_CM.ExecuteNonQuery();
+
+                    if (_updateCount == 1)
+                    {
+                        DateTime _dtHolder = DateTime.Now;
+                        int _years = _dtHolder.Year;
+                        string ResponseReceipt = "ML" + LoanId + "-" + _years + "-" + NewReceiptNumber;
+
+                        AllGeneralResponse = new ModelView.GenralResponseMV.AnySingelAllGenralResponse()
+                        {
+                            statusCode = "OT001",
+                            notification = "Receipt Updated",
+                            responseValue = ResponseReceipt
+                        };
+                    }
+                    else
+                    {
+                        AllGeneralResponse = new ModelView.GenralResponseMV.AnySingelAllGenralResponse()
+                        {
+                            statusCode = "OT002",
+                            notification = "Receipt UpdatedFailed",
+
+                        };
+
+                    }
+
+                }
+                else
+                {
+                    AllGeneralResponse = new ModelView.GenralResponseMV.AnySingelAllGenralResponse()
+                    {
+                        statusCode = "OT002",
+                        notification = "No. Receipt with that ID",
+
+                    };
+                }
+
+            }
+            catch (Exception Ex)
+            {
+
+                AllGeneralResponse = new ModelView.GenralResponseMV.AnySingelAllGenralResponse()
+                {
+                    statusCode = "OT099",
+                    notification = "System error, contact system administrator",
+                };
+            }
+
+            return AllGeneralResponse;
+
+
+        }
 
         //Transaction Registration
 
-        internal ModelView.PaymentTransactionMV.PaymentResponse TransactionRegistration(string Clientaccount, string PhoneNumber, int ServiceProvider, decimal Amount, string LoanType)
+        internal async Task<ModelView.PaymentTransactionMV.PaymentResponse> TransactionRegistration(string Clientaccount, string PhoneNumber, int ServiceProvider, decimal Amount, string LoanType, string ClientLoanId)
         {
             SqlConnection TR_App_Conn = new SqlConnection(DatabaseConnection.localConnectionDatabase());
             ModelView.PaymentTransactionMV.PaymentResponse PaymentClient = null;
@@ -30,15 +113,14 @@ namespace UssdTransaction
             try
             {
                 //Get Transaction Uuid
-                string InternalTraxId = _quickDetailHolder.UuidGenerented();
+                string InternalTraxId = await Task.Run(() => _quickDetailHolder.UuidGenerented());
 
-                //System data
                 DateTime _dtHolder = DateTime.Now;
                 string CurrentDate = Convert.ToDateTime(_dtHolder).ToString("yyyy-MM-dd");
 
                 //Register Transaction
-                string AddPendingTransaction = "Insert Into AccountTransaction (InternalTransactionId,Clientaccount,PhoneNumber,Trx_Date,Amount,ServiceProvider,TransactionStatus,LoanType) Values " +
-                    "(@InternalTransactionId,@Clientaccount,@PhoneNumber,@Trx_Date,@Amount,@ServiceProvider,@TransactionStatus,@LoanType)";
+                string AddPendingTransaction = "Insert Into AccountTransaction (InternalTransactionId,Clientaccount,PhoneNumber,Trx_Date,Amount,ServiceProvider,TransactionStatus,LoanType,ClientLoanId) Values " +
+                    "(@InternalTransactionId,@Clientaccount,@PhoneNumber,@Trx_Date,@Amount,@ServiceProvider,@TransactionStatus,@LoanType,@ClientLoanId)";
                 SqlCommand TR_App_CM = new SqlCommand(AddPendingTransaction, TR_App_Conn);
                 TR_App_CM.Parameters.Add("@InternalTransactionId", SqlDbType.NVarChar).Value = InternalTraxId;
                 TR_App_CM.Parameters.Add("@Clientaccount", SqlDbType.NVarChar).Value = Clientaccount;
@@ -49,6 +131,7 @@ namespace UssdTransaction
 
                 TR_App_CM.Parameters.Add("@Amount", SqlDbType.Decimal).Value = Amount;
                 TR_App_CM.Parameters.Add("@LoanType", SqlDbType.NVarChar).Value = LoanType;
+                TR_App_CM.Parameters.Add("@ClientLoanId", SqlDbType.NVarChar).Value = ClientLoanId;
 
                 if (TR_App_Conn.State == ConnectionState.Closed)
                 {
@@ -77,7 +160,6 @@ namespace UssdTransaction
                         notification = "Transaction registered",
                     };
                 }
-
             }
             catch (Exception)
             {
@@ -90,8 +172,7 @@ namespace UssdTransaction
             return PaymentClient;
         }
 
-        //Updata  Account Number 
-
+        //Updata  Account details
         internal ModelView.GenralResponseMV.AllGenralResponse UpdateAccountNumber(string Clientaccount, string SessionId, string AccountHolderName)
         {
             SqlConnection TR_App_Conn = new SqlConnection(DatabaseConnection.localConnectionDatabase());
@@ -106,8 +187,6 @@ namespace UssdTransaction
                 TR_App_CM.Parameters.Add("@ClientAccountNumber", SqlDbType.NVarChar).Value = Clientaccount;
                 TR_App_CM.Parameters.Add("@PaymentNumber", SqlDbType.NVarChar).Value = "26" + Clientaccount;
                 TR_App_CM.Parameters.Add("@accHolderName", SqlDbType.NVarChar).Value = AccountHolderName;
-
-
 
                 if (TR_App_Conn.State == ConnectionState.Closed)
                 {
@@ -229,7 +308,7 @@ namespace UssdTransaction
 
                 int _uptCount = UPT_App_CM.ExecuteNonQuery(); //Update client
                                                               //
-                if (_uptCount  == 1)
+                if (_uptCount == 1)
                 {
                     GeneralResponse = new ModelView.GenralResponseMV.AllGenralResponse()
                     {
@@ -260,17 +339,16 @@ namespace UssdTransaction
         }
 
 
-
         //Complete Loan repayment
         internal async void CompleteLoanPayment(string SessionId, decimal PaidLoanAmount)
         {
             SqlConnection CLP_App_CN = new SqlConnection(DatabaseConnection.localConnectionDatabase());
-            //  AllCredentialHolder.QuickRefHolder RefHolder = new AllCredentialHolder.QuickRefHolder();
+            // AllCredentialHolder.QuickRefHolder RefHolder = new AllCredentialHolder.QuickRefHolder();
 
             try
             {
                 //Search for client details 
-                string Client_details_Query = "Select uts.ui_ClientAccountNumber,uts.uiClientOptionSeleccted,uts.PaymentAmount,sbh.tbClientLoanId,uts.ClientPaymentNumber,sbh.tbProductId,uts.AccountHolderName,uts.uiClientOptionSeleccted from " +
+                string Client_details_Query = "Select uts.ui_ClientAccountNumber,uts.uiClientOptionSeleccted,uts.PaymentAmount,sbh.tbClientLoanId,uts.ClientPaymentNumber,sbh.tbProductId,uts.AccountHolderName,uts.uiClientOptionSeleccted,sbh.tbClientLoanId from " +
                     "[UssdTransactionSession](nolock) as UTS inner join [UssdSessionBalanceHolder](nolock) as SBH On  UTS.ui_SessionId= SBH.tbSessionId Where ui_SessionId = @sessionId";
                 SqlCommand CLP_App_CM = new SqlCommand(Client_details_Query, CLP_App_CN);
                 CLP_App_CM.Parameters.Add("@sessionId", SqlDbType.NVarChar).Value = SessionId;
@@ -311,7 +389,7 @@ namespace UssdTransaction
                         int ServiceProviderId = Convert.ToInt16(ClientNumberVerification.responseValue);
 
                         //Register the current tansaction before sending for payment 
-                        var RegistrationTransactionResponse = await Task.Run(() => TransactionRegistration(ClientAccountNum, ToPayPhoneNumber, ServiceProviderId, PaidLoanAmount, ProductId));
+                        var RegistrationTransactionResponse = await Task.Run(() => TransactionRegistration(ClientAccountNum, ToPayPhoneNumber, ServiceProviderId, PaidLoanAmount, ProductId, ClientLoanId));
                         string rtStatusCode = RegistrationTransactionResponse.statusCode;
                         string rtNotification = RegistrationTransactionResponse.notification;
 
@@ -340,7 +418,11 @@ namespace UssdTransaction
                                 {
                                     string TransactionUuidRegatMtn = RegistrationTransactionResponse.details.transactionId; //TRansaction Id 
 
-                                    var PaymentQuery = await Task.Run(() => PaymentClient.Request_To_Pay(PaidLoanAmount, ProductId + " - Loan repayment", ToPayPhoneNumber, TransactionUuidRegatMtn));
+                                    var GeneratedLoanReceipt = await Task.Run(() => NewReceiptNumGenerator(ClientLoanId));
+
+                                    string ReceiptNumber = GeneratedLoanReceipt.responseValue; //Current New Receipt Number
+
+                                    var PaymentQuery = await Task.Run(() => PaymentClient.Request_To_Pay(PaidLoanAmount, ProductId + " - Loan repayment", ToPayPhoneNumber, TransactionUuidRegatMtn, ReceiptNumber));
                                     string tuStatusCode = PaymentQuery.statusCode;
                                     string Notification = PaymentQuery.notification;
 
@@ -363,23 +445,48 @@ namespace UssdTransaction
                                                 string trxStatus = VerificationResponse.verification.status;
                                                 string ExternalTranx = VerificationResponse.verification.financialTransactionId;
 
+                                                //Transaction Receipt Id
+                                                string receiptNumber = GeneratedLoanReceipt.responseValue;
+
                                                 if (trxStatus.ToUpper() == "SUCCESSFUL")
                                                 {
                                                     //Completeed
                                                     var UpdateStatus = await Task.Run(() => UpdatePaymentTransaction(TransactionUuidRegatMtn, ExternalTranx, 4)); //Transaction completed
                                                     string _usStatusCode = UpdateStatus.statusCode;
                                                     string _notification = UpdateStatus.notification;
+
                                                     if (_usStatusCode == "OT001")
                                                     {
-                                                        //Send Sms notification
-                                                        SmsBodyHolder.Append("Hi, " + AccountHolderName + "\n");
-                                                        SmsBodyHolder.Append("Loan repayment for K" + PaidLoanAmount + ", has been recived\n");
-                                                        SmsBodyHolder.Append("Trx No. " + TransactionUuidRegatMtn + "\n");
-                                                        SmsBodyHolder.Append("Physical reciept, visit any of our offices.");
-                                                        await Task.Run(() => Sms_Notification_Client.SendSmsNotification(ToPayPhoneNumber, SmsBodyHolder.ToString())); 
-                                                   
-                                                    }
+                                                        //Post tranaction to Musoni
+                                                        var _abAccountBalanceResponse = await Task.Run(() => MosoniClient.IPostAccountBalance(PaidLoanAmount, receiptNumber, ClientAccountNum, ClientLoanId));
+                                                        string _abStatusCode = _abAccountBalanceResponse.statusCode;
+                                                        string _abNotification = _abAccountBalanceResponse.notification;
 
+                                                        if (_abStatusCode == "OT001")
+                                                        {
+                                                            string _abCommandId = _abAccountBalanceResponse.approvalStatus.commandId;
+
+                                                            //Authorize Trnsaction in Musoni 
+                                                            var AuthMusoniPost = await Task.Run(() => MosoniClient.IAuthorizaPostRepaymentMusoni(_abCommandId));
+
+                                                            string AMStatusCode = AuthMusoniPost.statusCode;
+                                                            string AMNotification = AuthMusoniPost.notification;
+
+                                                            if (AMStatusCode == "OT001")
+                                                            {
+
+                                                                //Send Sms notification
+                                                                SmsBodyHolder.Append("Hi, " + AccountHolderName + "\n");
+                                                                SmsBodyHolder.Append("Loan repayment for K" + PaidLoanAmount + ", has been recieved\n");
+                                                                SmsBodyHolder.Append("Trx No. " + receiptNumber + "\n");
+                                                                SmsBodyHolder.Append("Physical reciept, visit any of our offices.");
+                                                                await Task.Run(() => Sms_Notification_Client.SendSmsNotification(ToPayPhoneNumber, SmsBodyHolder.ToString()));
+
+
+                                                            }
+                                                        }
+
+                                                    }
 
                                                     break;
                                                 }
@@ -395,7 +502,7 @@ namespace UssdTransaction
                                                         //Send Sms notification
                                                         SmsBodyHolder.Append("Hi, " + AccountHolderName);
                                                         SmsBodyHolder.Append("Loan repayment for K" + PaidLoanAmount + ", has failed.\n");
-                                                        SmsBodyHolder.Append("Trx No. " + TransactionUuidRegatMtn + "\n");
+                                                        SmsBodyHolder.Append("Trx No. " + receiptNumber + "\n");
                                                         SmsBodyHolder.Append("Physical reciept, visit any of our offices.");
                                                         await Task.Run(() => Sms_Notification_Client.SendSmsNotification(ToPayPhoneNumber, SmsBodyHolder.ToString()));
 
@@ -405,96 +512,22 @@ namespace UssdTransaction
                                                 }
 
                                             }
-                                            else
-                                            {
-                                                //Verification didnt complete
-
-                                            }
-
                                         }
+                                    }                                    
 
-
-
-                                    }
-                                    else
-                                    {
-
-
-                                    }
-
-
-
-
-                                }
-                                else
-                                {
-                                    //Payment higher then the loan
-
-
-
-                                }
-
+                                }                               
 
                             }
-                            else
-                            {
-
-
-
-
-                            }
-
-
-
-
-
-
-
-
-
-
-
-
-
                         }
-                        else
-                        {
-                            //Registration Failed
-
-
-
-                        }
-
-
-
-
+                      
                     }
-                    else if (numStatusCode == "OT003")
-                    {
-                        //Check again number
-
-
-                    }
-                    else
-                    {
-
-
-
-
-                    }
+                 
                 }
-                else
-                {
-                    //Client sesion Id Search failed
-
-
-
-                }
+                
             }
             catch (Exception Ex)
             {
-
-                throw;
+ 
             }
             finally
             {

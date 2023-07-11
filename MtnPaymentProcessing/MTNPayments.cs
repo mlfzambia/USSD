@@ -181,7 +181,7 @@ namespace MtnPaymentProcessing
 
 
         //MTN Request to pay transaction
-        public async Task<ModelView.GenralResponseMV.AnySingelAllGenralResponse> Request_To_Pay(decimal amount, string narration, string phonenumber,string TransactionUuid)
+        public async Task<ModelView.GenralResponseMV.AnySingelAllGenralResponse> Request_To_Pay(decimal amount, string narration, string phonenumber,string TransactionUuid, string Tranx_Receipt_Num)
         {
             ModelView.GenralResponseMV.AnySingelAllGenralResponse General_Response_client = null;
 
@@ -220,7 +220,7 @@ namespace MtnPaymentProcessing
                     {
                         amount = amount.ToString(),
                         currency = Currency,
-                        externalId = TransactionUuid,
+                        externalId = Tranx_Receipt_Num,
                         payeeNote = narration,
                         payer = new ModelView.MTNModelview.Payerdetails()
                         {

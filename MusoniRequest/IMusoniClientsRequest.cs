@@ -10,7 +10,16 @@ namespace MusoniRequest
     {
         Task<ModelView.SannyResponseMV.SearchDetailsResponse> IMusoniClientDetails(string Phonenumber);
 
+
         Task<ModelView.SannyResponseMV.ClientLoanBalanceMainDetailResponse> IGetClientAccountBalance(string Phonenumber);
 
+        //Repayment detail 
+        Task<ModelView.SannyResponseMV.loanPendingApprovalResponse> IPostAccountBalance(decimal PaymentAmount, string receiptNumber, string AccountNum,
+            string ClientloanId);
+
+        //Approval Details
+        Task<ModelView.GenralResponseMV.AllGenralResponse> IAuthorizaPostRepaymentMusoni(string CommandId);
+
+       
     }
 }

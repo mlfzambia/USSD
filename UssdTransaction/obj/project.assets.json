@@ -411,6 +411,24 @@
           "bin/placeholder/MtnPaymentProcessing.dll": {}
         }
       },
+      "MusoniRequest/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "AllCredentialHolder": "1.0.0",
+          "ConnectionLinks": "1.0.0",
+          "ModelView": "1.0.0",
+          "MtnPaymentProcessing": "1.0.0",
+          "Newtonsoft.Json": "13.0.3",
+          "System.Data.SqlClient": "4.8.5"
+        },
+        "compile": {
+          "bin/placeholder/MusoniRequest.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MusoniRequest.dll": {}
+        }
+      },
       "SmsNotification/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -1111,6 +1129,11 @@
       "path": "../MtnPaymentProcessing/MtnPaymentProcessing.csproj",
       "msbuildProject": "../MtnPaymentProcessing/MtnPaymentProcessing.csproj"
     },
+    "MusoniRequest/1.0.0": {
+      "type": "project",
+      "path": "../MusoniRequest/MusoniRequest.csproj",
+      "msbuildProject": "../MusoniRequest/MusoniRequest.csproj"
+    },
     "SmsNotification/1.0.0": {
       "type": "project",
       "path": "../SmsNotification/SmsNotification.csproj",
@@ -1121,6 +1144,7 @@
     "net7.0": [
       "ConnectionLinks >= 1.0.0",
       "MtnPaymentProcessing >= 1.0.0",
+      "MusoniRequest >= 1.0.0",
       "SmsNotification >= 1.0.0",
       "System.Data.SqlClient >= 4.8.5"
     ]
@@ -1163,6 +1187,9 @@
             },
             "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
               "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj"
+            },
+            "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj": {
+              "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj"
             },
             "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj": {
               "projectPath": "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj"

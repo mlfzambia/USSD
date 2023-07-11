@@ -259,6 +259,7 @@
         "dependencies": {
           "ConnectionLinks": "1.0.0",
           "MtnPaymentProcessing": "1.0.0",
+          "MusoniRequest": "1.0.0",
           "SmsNotification": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },

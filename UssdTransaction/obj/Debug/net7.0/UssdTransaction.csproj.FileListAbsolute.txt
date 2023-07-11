@@ -21,3 +21,5 @@ D:\Project Software\MLFZambiaUssd\UssdTransaction\obj\Debug\net7.0\UssdTransacti
 D:\Project Software\MLFZambiaUssd\UssdTransaction\obj\Debug\net7.0\ref\UssdTransaction.dll
 D:\Project Software\MLFZambiaUssd\UssdTransaction\bin\Debug\net7.0\SmsNotification.dll
 D:\Project Software\MLFZambiaUssd\UssdTransaction\bin\Debug\net7.0\SmsNotification.pdb
+D:\Project Software\MLFZambiaUssd\UssdTransaction\bin\Debug\net7.0\MusoniRequest.dll
+D:\Project Software\MLFZambiaUssd\UssdTransaction\bin\Debug\net7.0\MusoniRequest.pdb

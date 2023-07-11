@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ConnectionLinks\ConnectionLinks.csproj" />
     <ProjectReference Include="..\MtnPaymentProcessing\MtnPaymentProcessing.csproj" />
+    <ProjectReference Include="..\MusoniRequest\MusoniRequest.csproj" />
     <ProjectReference Include="..\SmsNotification\SmsNotification.csproj" />
   </ItemGroup>
 

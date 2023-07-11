@@ -2,6 +2,7 @@
 using System.Data;
 using System.Text;
 using Microsoft.Extensions.Primitives;
+using static ModelView.GenralResponseMV;
 
 namespace UssdProcessRequest
 {
@@ -20,6 +21,7 @@ namespace UssdProcessRequest
         AllCredentialHolder.QuickRefHolder RHClientHOlder = new AllCredentialHolder.QuickRefHolder();
         UssdTransaction.UssdTransactionAsync Ussd_Trx_Client = new UssdTransaction.UssdTransactionAsync();
 
+       
 
 
         internal async Task<string> UssdRequestDetails(int IsNewRequest, string MsisdnNumber, string SessionId, string ClientInput)
@@ -54,10 +56,11 @@ namespace UssdProcessRequest
 
                     if (URCount == 1)
                     {
-                        UssdStylesResponse = "Welcome to MicroLoan.\n" +
-                            "\n" +
-                            "1. Repay Loan\n" +
-                            "2. Registration\n";
+                        UssdStylesResponse = "Welcome to MicroLoan.\n " +
+                            "1. Repay Loan\n " +
+                            "2. Registration\n " +
+                            "3. Registration\n" +
+                            "99. Logout\n";
                     }
                     else
                     {
@@ -107,6 +110,10 @@ namespace UssdProcessRequest
                             {
                                 UssdStylesResponse = "Registration coming soon.";
                             }
+                            else if (ClientInput == "3") //Selected Page Two
+                            {
+                                UssdStylesResponse = "You have successfull logged out.";
+                            }
                             else
                             {
                                 UssdStylesResponse = "Selected Input is invalied";
@@ -143,6 +150,7 @@ namespace UssdProcessRequest
                                     string _StatusCode = ClientBalanceResponse.statusCode;
                                     string _notification = ClientBalanceResponse.notification;
                                     string _ClientAccountHolder = ResponseDetails.holder.parentName;
+                                   
 
                                     if (statusCode == "OT001")
                                     {
@@ -154,39 +162,43 @@ namespace UssdProcessRequest
                                         {
                                             int rowcount = 1 + i;
                                             string LoanTypes = ClientBalanceResponse.loanDetails[i].productName;
+                                            string _clientLoanNumber = ClientBalanceResponse.loanDetails[i].ToString();
+
                                             decimal _loanCurrentBalance = 0;
 
                                             if (LoanTypes.ToUpper() == "SDL")
                                             {
-                                                string LoanBalanceType = "Business Loan - ";
+                                                string LoanBalanceType = "Business Loan ";
                                                 _loanCurrentBalance = Math.Round(ClientBalanceResponse.loanDetails[i].loanBalace);
                                                 _sbResponseDetail.Append(rowcount + ". " + LoanBalanceType + "Bal :K " + _loanCurrentBalance + "\n");
 
-                                                string ProductId = ClientBalanceResponse.loanDetails[i].productId;
+                                                string ClientLoanId = ClientBalanceResponse.loanDetails[i].id;
 
                                                 //Update the System with what loan this is
-                                                await Task.Run(() => Ussd_Trx_Client.IAddSessionBalance(SessionId, LoanTypes, LoanBalanceType, _loanCurrentBalance, rowcount, ProductId));
+                                                await Task.Run(() => Ussd_Trx_Client.IAddSessionBalance(SessionId, LoanTypes, LoanBalanceType, _loanCurrentBalance, rowcount, ClientLoanId));
 
                                             }
                                             else if (LoanTypes.ToUpper() == "TIL")
                                             {
-                                                string LoanBalanceType = "Tilime Loan - ";
+                                                string LoanBalanceType = "Tilime Loan ";
                                                 _loanCurrentBalance = Math.Round(ClientBalanceResponse.loanDetails[i].loanBalace);
                                                 _sbResponseDetail.Append(rowcount + ". " + LoanBalanceType + "Bal :K " + _loanCurrentBalance + "\n");
 
-                                                string ProductId = ClientBalanceResponse.loanDetails[i].productId;
+                                                string ClientLoanId = ClientBalanceResponse.loanDetails[i].id;
 
                                                 //Update the system with what loan this is
-                                                await Task.Run(() => Ussd_Trx_Client.IAddSessionBalance(SessionId, LoanTypes, LoanBalanceType, _loanCurrentBalance, rowcount, ProductId));
+                                                await Task.Run(() => Ussd_Trx_Client.IAddSessionBalance(SessionId, LoanTypes, LoanBalanceType, _loanCurrentBalance, rowcount, ClientLoanId));
                                             }
 
                                         }
-                                        UssdStylesResponse = _sbResponseDetail.ToString();
+                                        _sbResponseDetail.Append("99. Enter Account No.");
+
+                                       UssdStylesResponse = _sbResponseDetail.ToString();
                                         //Update Client Page Slection
                                         await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "2", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", DBNull.Value.ToString()));
 
                                         //Update Client Account
-                                        await Task.Run(() => Ussd_Trx_Client.IUpdateAccountNumber(ClientInput, SessionId, _ClientAccountHolder));
+                                       await Task.Run(() => Ussd_Trx_Client.IUpdateAccountNumber(ClientInput, SessionId, _ClientAccountHolder));
 
                                     }
                                     else
@@ -196,8 +208,8 @@ namespace UssdProcessRequest
                                 }
                                 else
                                 {
-                                    UssdStylesResponse = "Wrong account.\n" +
-                                        "Please enter your account again";
+                                    UssdStylesResponse = "No account found.\n" +
+                                        "Please enter your Account again";
                                     //Update Client Page Slection
                                     await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "1", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", DBNull.Value.ToString()));
                                 }
@@ -244,9 +256,13 @@ namespace UssdProcessRequest
                         case 2:
                             UssdStylesResponse = "Customer registration coming soon";
                             break;
-
+                        case 3:
+                            UssdStylesResponse = "Statement coming soon";
+                            break;
+                        case 99:
+                            UssdStylesResponse = "You have successfull logout";
+                            break;
                     }
-
                 }
                 else
                 {
