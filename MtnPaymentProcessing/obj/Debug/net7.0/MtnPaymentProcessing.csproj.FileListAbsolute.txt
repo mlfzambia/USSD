@@ -15,3 +15,5 @@ D:\Project Software\MLFZambiaUssd\MtnPaymentProcessing\obj\Debug\net7.0\MtnPayme
 D:\Project Software\MLFZambiaUssd\MtnPaymentProcessing\obj\Debug\net7.0\refint\MtnPaymentProcessing.dll
 D:\Project Software\MLFZambiaUssd\MtnPaymentProcessing\obj\Debug\net7.0\MtnPaymentProcessing.pdb
 D:\Project Software\MLFZambiaUssd\MtnPaymentProcessing\obj\Debug\net7.0\ref\MtnPaymentProcessing.dll
+D:\Project Software\MLFZambiaUssd\MtnPaymentProcessing\bin\Debug\net7.0\ConnectionLinks.dll
+D:\Project Software\MLFZambiaUssd\MtnPaymentProcessing\bin\Debug\net7.0\ConnectionLinks.pdb

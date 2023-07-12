@@ -191,7 +191,7 @@ namespace UssdProcessRequest
                                             }
 
                                         }
-                                        _sbResponseDetail.Append("99. Enter Account No.");
+                                        _sbResponseDetail.Append("0. Back");
 
                                        UssdStylesResponse = _sbResponseDetail.ToString();
                                         //Update Client Page Slection

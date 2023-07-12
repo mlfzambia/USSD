@@ -48,3 +48,5 @@ D:\Project Software\MLFZambiaUssd\MLFZUssdApplication\obj\Debug\net7.0\MLFZUssdA
 D:\Project Software\MLFZambiaUssd\MLFZUssdApplication\obj\Debug\net7.0\ref\MLFZUssdApplication.dll
 D:\Project Software\MLFZambiaUssd\MLFZUssdApplication\bin\Debug\net7.0\SmsNotification.dll
 D:\Project Software\MLFZambiaUssd\MLFZUssdApplication\bin\Debug\net7.0\SmsNotification.pdb
+D:\Project Software\MLFZambiaUssd\MLFZUssdApplication\bin\Debug\net7.0\SecuritySystemCheck.dll
+D:\Project Software\MLFZambiaUssd\MLFZUssdApplication\bin\Debug\net7.0\SecuritySystemCheck.pdb

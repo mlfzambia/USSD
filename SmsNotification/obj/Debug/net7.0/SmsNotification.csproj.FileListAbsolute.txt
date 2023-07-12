@@ -15,3 +15,5 @@ D:\Project Software\MLFZambiaUssd\SmsNotification\obj\Debug\net7.0\SmsNotificati
 D:\Project Software\MLFZambiaUssd\SmsNotification\obj\Debug\net7.0\refint\SmsNotification.dll
 D:\Project Software\MLFZambiaUssd\SmsNotification\obj\Debug\net7.0\SmsNotification.pdb
 D:\Project Software\MLFZambiaUssd\SmsNotification\obj\Debug\net7.0\ref\SmsNotification.dll
+D:\Project Software\MLFZambiaUssd\SmsNotification\bin\Debug\net7.0\ConnectionLinks.dll
+D:\Project Software\MLFZambiaUssd\SmsNotification\bin\Debug\net7.0\ConnectionLinks.pdb

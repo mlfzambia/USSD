@@ -287,7 +287,7 @@ namespace UssdTransaction
         }
 
         //Updata transaction table with the status of the transaction
-        internal ModelView.GenralResponseMV.AllGenralResponse UpdatePaymentTransaction(string InternalTrxId, string Ext_Tranx_Id, int TranStatus)
+        internal ModelView.GenralResponseMV.AllGenralResponse UpdatePaymentTransaction(string InternalTrxId, string Ext_Tranx_Id, int TranStatus,string ReceiptNum)
         {
             ModelView.GenralResponseMV.AllGenralResponse GeneralResponse = null;
 
@@ -295,11 +295,14 @@ namespace UssdTransaction
 
             try
             {
-                string UPT_Payment_Trx_Query = "Update [AccountTransaction] set Ext_TransactionId = @ExTransId, TransactionStatus=@TranStatus Where InternalTransactionId = @IntTrxId";
+                string UPT_Payment_Trx_Query = "Update [AccountTransaction] set Ext_TransactionId = @ExTransId, TransactionStatus=@TranStatus,ReceiptNum=@ReceiptNum Where InternalTransactionId = @IntTrxId";
                 SqlCommand UPT_App_CM = new SqlCommand(UPT_Payment_Trx_Query, UPT_App_Con);
                 UPT_App_CM.Parameters.Add("@ExTransId", SqlDbType.NVarChar).Value = Ext_Tranx_Id;
                 UPT_App_CM.Parameters.Add("@TranStatus", SqlDbType.NVarChar).Value = TranStatus;
                 UPT_App_CM.Parameters.Add("@IntTrxId", SqlDbType.NVarChar).Value = InternalTrxId;
+                UPT_App_CM.Parameters.Add("@ReceiptNum", SqlDbType.NVarChar).Value = ReceiptNum;
+
+
 
                 if (UPT_App_Con.State == ConnectionState.Closed)
                 {
@@ -451,7 +454,7 @@ namespace UssdTransaction
                                                 if (trxStatus.ToUpper() == "SUCCESSFUL")
                                                 {
                                                     //Completeed
-                                                    var UpdateStatus = await Task.Run(() => UpdatePaymentTransaction(TransactionUuidRegatMtn, ExternalTranx, 4)); //Transaction completed
+                                                    var UpdateStatus = await Task.Run(() => UpdatePaymentTransaction(TransactionUuidRegatMtn, ExternalTranx, 4, receiptNumber)); //Transaction completed
                                                     string _usStatusCode = UpdateStatus.statusCode;
                                                     string _notification = UpdateStatus.notification;
 
@@ -493,7 +496,7 @@ namespace UssdTransaction
                                                 else if (trxStatus.ToUpper() == "FAILED")
                                                 {
                                                     //Completeed
-                                                    var UpdateStatus = await Task.Run(() => UpdatePaymentTransaction(TransactionUuidRegatMtn, ExternalTranx, 2)); //Transaction completed
+                                                    var UpdateStatus = await Task.Run(() => UpdatePaymentTransaction(TransactionUuidRegatMtn, ExternalTranx, 2, receiptNumber)); //Transaction completed
                                                     string _usStatusCode = UpdateStatus.statusCode;
                                                     string _notification = UpdateStatus.notification;
                                                     if (_usStatusCode == "OT001")

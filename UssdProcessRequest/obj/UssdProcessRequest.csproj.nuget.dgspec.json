@@ -33,6 +33,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj": {
+                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj"
+              },
               "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj": {
                 "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj"
               }
@@ -48,6 +51,16 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
