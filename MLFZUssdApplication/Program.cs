@@ -1,7 +1,4 @@
 using Microsoft.AspNetCore.Authentication;
-
-
-
 using MLFZUssdApplication;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,10 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddTransient<AllCredentialHolder.QuickRefHolder>();
+builder.Services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication",null);
+
 
 builder.Services.AddSingleton<SecuritySystemCheck.SecurityCheck>();
 
-//builder.Services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
 var app = builder.Build();
 

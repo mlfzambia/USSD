@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xKtz8yCBfDgkL6pIZDsk3cXcgoWwnP1d24ugiVMKt95ruofRRaipQZ8m2iHUTt6IW/7ihucu2vgYZwFpAzCKSw==",
+  "dgSpecHash": "/b4gk30TSG+e/xuhu0wVQTv3bPeMhf2bNBRpqMM1VssWwPG/bcO9gbgzmeM5+N/ELWxKBhQVWnbFUFstd0kH5Q==",
   "success": true,
   "projectFilePath": "D:\\Project Software\\MLFZambiaUssd\\SecuritySystemCheck\\SecuritySystemCheck.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\telek\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\telek\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\telek\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\telek\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",

@@ -17,3 +17,5 @@ D:\Project Software\MLFZambiaUssd\SecuritySystemCheck\obj\Debug\net7.0\SecurityS
 D:\Project Software\MLFZambiaUssd\SecuritySystemCheck\obj\Debug\net7.0\refint\SecuritySystemCheck.dll
 D:\Project Software\MLFZambiaUssd\SecuritySystemCheck\obj\Debug\net7.0\SecuritySystemCheck.pdb
 D:\Project Software\MLFZambiaUssd\SecuritySystemCheck\obj\Debug\net7.0\ref\SecuritySystemCheck.dll
+D:\Project Software\MLFZambiaUssd\SecuritySystemCheck\bin\Debug\net7.0\SmsNotification.dll
+D:\Project Software\MLFZambiaUssd\SecuritySystemCheck\bin\Debug\net7.0\SmsNotification.pdb

@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AllCredentialHolder\AllCredentialHolder.csproj" />
     <ProjectReference Include="..\ModelView\ModelView.csproj" />
+    <ProjectReference Include="..\SmsNotification\SmsNotification.csproj" />
   </ItemGroup>
 
 </Project>

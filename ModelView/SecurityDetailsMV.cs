@@ -16,14 +16,12 @@ namespace ModelView
             public string statusCode { get; set; }
             public string notification { get; set; }
             public CreatedDetails details { get; set; }
-
         }
 
         public class CreatedDetails
         {
-            public string uuidKeyEncrypted { get; set; }
-            
-            
+            public string uuidKey { get; set; }
+            public string clientSubscription { get; set; }
         }
 
 

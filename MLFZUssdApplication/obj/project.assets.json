@@ -1237,6 +1237,7 @@
         "dependencies": {
           "AllCredentialHolder": "1.0.0",
           "ModelView": "1.0.0",
+          "SmsNotification": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "compile": {
