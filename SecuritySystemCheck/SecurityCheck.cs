@@ -11,8 +11,6 @@ namespace SecuritySystemCheck
         ConnectionLinks.LinkDetails ConnectionHolder = new ConnectionLinks.LinkDetails();
         SmsNotification.Notification Sms_client = new SmsNotification.Notification();
 
-
-
         #region Encryption Creation
 
         public async Task<ModelView.SecurityDetailsMV.CreatedSecurityDetailsResponse> SecurityGenerator(string ClientName)
@@ -81,6 +79,10 @@ namespace SecuritySystemCheck
                     statusCode = "OT099",
                     notification = "System error, contact system administrator"
                 };
+            }
+            finally
+            {
+                SGAppCon.Close();
             }
             return SecurityDetails;
         }
@@ -154,10 +156,7 @@ namespace SecuritySystemCheck
             return _sbBuilder.ToString();
         }
 
-
         #endregion
-
-
 
         public async Task<ModelView.GenralResponseMV.AllGenralResponse> SecurityCheckPoint(string ClientUuid, string SubcriptionKey)
         {
@@ -254,11 +253,14 @@ namespace SecuritySystemCheck
                     notification = "System error, contact system administrator"
                 };
             }
+            finally
+            {
+                SCP_App_Con.Close();
+            }
 
             return GeneralResponse;
 
         }
-
 
         //Shut Down Ussd Process
 
@@ -385,9 +387,12 @@ namespace SecuritySystemCheck
                     notification = "System error, contact system administrator"
                 };
             }
+            finally
+            {
+                SD_App_Con.Close();
+            }
             return GeneralResponse;
         }
-
 
         internal ModelView.GenralResponseMV.AllGenralResponse UssdStatusChange(int StatusId)
         {
@@ -434,11 +439,14 @@ namespace SecuritySystemCheck
                     notification = "System error, contact system administrator"
                 };
             }
+            finally
+            {
+                _usCon.Close();
+            }
 
             return _generalResponse;
 
         }
-
 
         //Sms notification
         internal async Task<ModelView.GenralResponseMV.AllGenralResponse> SmsNotification(string SmsBody)
@@ -501,6 +509,11 @@ namespace SecuritySystemCheck
                     notification = "System error, contact system administrator"
                 };
             }
+            finally
+            {
+                _smsCon.Close();
+            }
+
             return GeneraResponse;
 
         }

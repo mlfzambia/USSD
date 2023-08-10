@@ -150,9 +150,11 @@ namespace MusoniRequest
                         string ShortProductId = ProductNameHolder.Substring(0, 3);
 
                         //Check Client Status
+
+                        //Only add Business Account
                         bool Active_Status = ResponseClientBalanceHolder.loanAccounts[i].status.active;
 
-                        if (Active_Status == true && ShortProductId.ToUpper() == "SDL" || ShortProductId.ToUpper() == "TIL")
+                        if (Active_Status == true && ShortProductId.ToUpper() == "SDL" )
                         {
                             clientLoan.Add(new ModelView.SannyResponseMV.ClientLoanBalanceSummary()
                             {
@@ -163,6 +165,20 @@ namespace MusoniRequest
                                 productId = ResponseClientBalanceHolder.loanAccounts[i].productId
                             });
                         }
+
+                        //Only Add Tilime Accounts
+                        if (Active_Status == true &&  ShortProductId.ToUpper() == "TIL")
+                        {
+                            clientLoan.Add(new ModelView.SannyResponseMV.ClientLoanBalanceSummary()
+                            {
+                                accountNo = ResponseClientBalanceHolder.loanAccounts[i].accountNo,
+                                id = ResponseClientBalanceHolder.loanAccounts[i].id,
+                                loanBalace = Convert.ToDecimal(ResponseClientBalanceHolder.loanAccounts[i].loanBalance),
+                                productName = ShortProductId,
+                                productId = ResponseClientBalanceHolder.loanAccounts[i].productId
+                            });
+                        }
+
                     }
                     detailResponse = new ModelView.SannyResponseMV.ClientLoanBalanceMainDetailResponse()
                     {

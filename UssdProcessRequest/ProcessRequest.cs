@@ -58,7 +58,7 @@ namespace UssdProcessRequest
                     {
                         UssdStylesResponse = "Welcome to MicroLoan.\n " +
                             "1. Repay Loan\n " +
-                            "2. Registration\n " +
+                            "2. Statement\n " +
                             "3. Registration\n" +
                             "99. Logout\n";
                     }
@@ -257,7 +257,7 @@ namespace UssdProcessRequest
                             UssdStylesResponse = "Customer registration coming soon";
                             break;
                         case 3:
-                            UssdStylesResponse = "Statement coming soon";
+                            UssdStylesResponse = "Customer Statement coming soon";
                             break;
                         case 99:
                             UssdStylesResponse = "You have successfull logout";
@@ -300,14 +300,13 @@ namespace UssdProcessRequest
                 RI_App_CM.Parameters.Add("@amount", SqlDbType.Decimal).Value = amount;
                 RI_App_CM.Parameters.Add("@uiClientOptionSeleccted", SqlDbType.NVarChar).Value = ClientOptionSeleccted;
 
-
-
                 if (RI_App_Con.State == ConnectionState.Closed)
                 {
                     RI_App_Con.Open();//Open Connection
                 }
 
                 var RICount = RI_App_CM.ExecuteNonQuery();
+            
                 if (RICount >= 1)
                 {
                     GenralResponse = new ModelView.GenralResponseMV.AllGenralResponse()

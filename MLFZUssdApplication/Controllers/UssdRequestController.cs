@@ -4,17 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MLFZUssdApplication.Controllers
 {
- 
-     
-   [Authorize]
+
+
+    [Authorize]
 
     [Route("api/UssdRequest/")]
     [ApiController]
     public class UssdRequestController : ControllerBase
     {
- 
 
-  UssdProcessRequest.ProcessRequestAsync PR_Client_Request = new UssdProcessRequest.ProcessRequestAsync();
+
+        UssdProcessRequest.ProcessRequestAsync PR_Client_Request = new UssdProcessRequest.ProcessRequestAsync();
 
 
         [HttpGet]

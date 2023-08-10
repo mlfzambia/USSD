@@ -56,7 +56,8 @@ namespace UssdTransaction
                     {
                         DateTime _dtHolder = DateTime.Now;
                         int _years = _dtHolder.Year;
-                        string ResponseReceipt = "ML" + LoanId + "-" + _years + "-" + NewReceiptNumber;
+                        int _month = _dtHolder.Month;
+                        string ResponseReceipt = "ML" + LoanId + "-" + _month + _years + "-" + NewReceiptNumber;
 
                         AllGeneralResponse = new ModelView.GenralResponseMV.AnySingelAllGenralResponse()
                         {
@@ -73,31 +74,29 @@ namespace UssdTransaction
                             notification = "Receipt UpdatedFailed",
 
                         };
-
                     }
-
                 }
                 else
                 {
                     AllGeneralResponse = new ModelView.GenralResponseMV.AnySingelAllGenralResponse()
                     {
                         statusCode = "OT002",
-                        notification = "No. Receipt with that ID",
-
+                        notification = "No. Receipt with that ID"
                     };
                 }
-
             }
             catch (Exception Ex)
             {
-
                 AllGeneralResponse = new ModelView.GenralResponseMV.AnySingelAllGenralResponse()
                 {
                     statusCode = "OT099",
                     notification = "System error, contact system administrator",
                 };
             }
-
+            finally
+            {
+                RNG_App_Con.Close();
+            }
             return AllGeneralResponse;
 
 
@@ -169,6 +168,12 @@ namespace UssdTransaction
                     notification = "System error, contact system administrator",
                 };
             }
+            finally
+            {
+                TR_App_Conn.Close();
+            }
+
+
             return PaymentClient;
         }
 
@@ -287,10 +292,9 @@ namespace UssdTransaction
         }
 
         //Updata transaction table with the status of the transaction
-        internal ModelView.GenralResponseMV.AllGenralResponse UpdatePaymentTransaction(string InternalTrxId, string Ext_Tranx_Id, int TranStatus,string ReceiptNum)
+        internal ModelView.GenralResponseMV.AllGenralResponse UpdatePaymentTransaction(string InternalTrxId, string Ext_Tranx_Id, int TranStatus, string ReceiptNum)
         {
             ModelView.GenralResponseMV.AllGenralResponse GeneralResponse = null;
-
             SqlConnection UPT_App_Con = new SqlConnection(DatabaseConnection.localConnectionDatabase());
 
             try
@@ -301,8 +305,6 @@ namespace UssdTransaction
                 UPT_App_CM.Parameters.Add("@TranStatus", SqlDbType.NVarChar).Value = TranStatus;
                 UPT_App_CM.Parameters.Add("@IntTrxId", SqlDbType.NVarChar).Value = InternalTrxId;
                 UPT_App_CM.Parameters.Add("@ReceiptNum", SqlDbType.NVarChar).Value = ReceiptNum;
-
-
 
                 if (UPT_App_Con.State == ConnectionState.Closed)
                 {
@@ -336,7 +338,7 @@ namespace UssdTransaction
                     notification = "System error, contact system administrator"
                 };
             }
-
+            finally { UPT_App_Con.Close(); }
 
             return GeneralResponse;
         }
@@ -421,6 +423,7 @@ namespace UssdTransaction
                                 {
                                     string TransactionUuidRegatMtn = RegistrationTransactionResponse.details.transactionId; //TRansaction Id 
 
+                                    //Generate new Re
                                     var GeneratedLoanReceipt = await Task.Run(() => NewReceiptNumGenerator(ClientLoanId));
 
                                     string ReceiptNumber = GeneratedLoanReceipt.responseValue; //Current New Receipt Number
@@ -516,21 +519,21 @@ namespace UssdTransaction
 
                                             }
                                         }
-                                    }                                    
+                                    }
 
-                                }                               
+                                }
 
                             }
                         }
-                      
+
                     }
-                 
+
                 }
-                
+
             }
             catch (Exception Ex)
             {
- 
+
             }
             finally
             {
