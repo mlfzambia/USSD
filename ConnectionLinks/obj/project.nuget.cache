@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "AMFbX1kqQE8YZJOXPcSSxL+Zp62acrO7O6yerIbu/S5mQtCb5xgEU8bK9B/VG98npuTJtLjmd9vsfsJQWa9pMw==",
+  "success": true,
+  "projectFilePath": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
+    "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\7.0.0\\microsoft.extensions.configuration.fileextensions.7.0.0.nupkg.sha512",
+    "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration.json\\7.0.0\\microsoft.extensions.configuration.json.7.0.0.nupkg.sha512",
+    "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\7.0.0\\microsoft.extensions.fileproviders.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\7.0.0\\microsoft.extensions.fileproviders.physical.7.0.0.nupkg.sha512",
+    "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\7.0.0\\microsoft.extensions.filesystemglobbing.7.0.0.nupkg.sha512",
+    "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\telek\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\telek\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

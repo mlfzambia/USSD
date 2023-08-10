@@ -1,0 +1,12 @@
+D:\Project Software\MLFZambiaUssd\ModelView\bin\Debug\net7.0\ModelView.deps.json
+D:\Project Software\MLFZambiaUssd\ModelView\bin\Debug\net7.0\ModelView.dll
+D:\Project Software\MLFZambiaUssd\ModelView\bin\Debug\net7.0\ModelView.pdb
+D:\Project Software\MLFZambiaUssd\ModelView\obj\Debug\net7.0\ModelView.csproj.AssemblyReference.cache
+D:\Project Software\MLFZambiaUssd\ModelView\obj\Debug\net7.0\ModelView.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project Software\MLFZambiaUssd\ModelView\obj\Debug\net7.0\ModelView.AssemblyInfoInputs.cache
+D:\Project Software\MLFZambiaUssd\ModelView\obj\Debug\net7.0\ModelView.AssemblyInfo.cs
+D:\Project Software\MLFZambiaUssd\ModelView\obj\Debug\net7.0\ModelView.csproj.CoreCompileInputs.cache
+D:\Project Software\MLFZambiaUssd\ModelView\obj\Debug\net7.0\ModelView.dll
+D:\Project Software\MLFZambiaUssd\ModelView\obj\Debug\net7.0\refint\ModelView.dll
+D:\Project Software\MLFZambiaUssd\ModelView\obj\Debug\net7.0\ModelView.pdb
+D:\Project Software\MLFZambiaUssd\ModelView\obj\Debug\net7.0\ref\ModelView.dll

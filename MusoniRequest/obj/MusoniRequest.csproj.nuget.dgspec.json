@@ -1,0 +1,375 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj": {}
+  },
+  "projects": {
+    "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj",
+        "projectName": "AllCredentialHolder",
+        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj",
+        "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
+        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\telek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj": {
+                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj"
+              },
+              "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj": {
+                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj",
+        "projectName": "ConnectionLinks",
+        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj",
+        "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
+        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\telek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj",
+        "projectName": "ModelView",
+        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj",
+        "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
+        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\telek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj",
+        "projectName": "MtnPaymentProcessing",
+        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj",
+        "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
+        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\telek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj": {
+                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj"
+              },
+              "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj": {
+                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj",
+        "projectName": "MusoniRequest",
+        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj",
+        "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
+        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\telek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj": {
+                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj"
+              },
+              "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj": {
+                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj"
+              },
+              "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj": {
+                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj"
+              },
+              "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
+                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
