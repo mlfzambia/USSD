@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
+using System.Security.Cryptography.Xml;
 
 namespace MLFZUssdApplication.Controllers
 {
@@ -9,6 +11,7 @@ namespace MLFZUssdApplication.Controllers
     {
         MusoniRequest.MusoniClientsRequestAsync MC_client = new MusoniRequest.MusoniClientsRequestAsync();
 
+        MtnPaymentProcessing.MTNPayments MtnPay = new MtnPaymentProcessing.MTNPayments();
 
         [HttpGet]
         [Route("tokenRequest")]
@@ -20,16 +23,16 @@ namespace MLFZUssdApplication.Controllers
 
         }
 
-        //[HttpGet]
-        //[Route("VerifyRequest")]
-        //[ActionName("VerifyRequest")]
-        //public async Task<IActionResult> VerifyRequest([FromQuery] string TraxRefId )
-        //{
-        //    var TokenResponse = await Task.Run(() => MtnPayments.Request_To_Pay_Transaction_Status(TraxRefId));
-        //    return Ok(TokenResponse);
+        [HttpGet]
+        [Route("VerifyRequested")]
+        [ActionName("VerifyRequest")]
+        public async Task<IActionResult> VerifyRequest([FromQuery] string ClientNumber)
+        {
+            var TokenResponse = await Task.Run(() => MtnPay.MtnClientNameDetails(ClientNumber));
+            return Ok(TokenResponse);
 
-        //}
+        }
 
-
+       
     }
 }

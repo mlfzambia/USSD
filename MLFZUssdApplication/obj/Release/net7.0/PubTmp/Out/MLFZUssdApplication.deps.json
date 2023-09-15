@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "MLFZUssdApplication/1.0.0": {
         "dependencies": {
+          "MLFPortalInformation": "1.0.0",
           "MtnPaymentProcessing": "1.0.0",
           "MusoniRequest": "1.0.0",
           "SecuritySystemCheck": "1.0.0",
@@ -560,6 +561,16 @@
         },
         "runtime": {
           "ConnectionLinks.dll": {}
+        }
+      },
+      "MLFPortalInformation/1.0.0": {
+        "dependencies": {
+          "ConnectionLinks": "1.0.0",
+          "ModelView": "1.0.0",
+          "System.Data.SqlClient": "4.8.5"
+        },
+        "runtime": {
+          "MLFPortalInformation.dll": {}
         }
       },
       "ModelView/1.0.0": {
@@ -1124,6 +1135,11 @@
       "sha512": ""
     },
     "ConnectionLinks/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MLFPortalInformation/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OPXPtZJ8M+sNTv+W0EpFzvKdCR7B+/bZGqpqlgn7XLop8foq+jpAv2MBJ22I8AnQNdlthEWQRN/lYumNMzAP8Q==",
+  "dgSpecHash": "D7IYIyvLSrP3dqbPNu06E63/4iXzcHJxVZhAgai28CXNwHsJbgQGgh3xVVZ7ArfEBS7JWQDqDz6fzMzZxZwcgw==",
   "success": true,
-  "projectFilePath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj",
+  "projectFilePath": "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eOtw2OgNvvongouFT7e26fMT/0niw8anCSlVHOlpa+9G+eWZjnsB26lBmq/qj07jRMDQcKvpj18hfg3tQYCS6Q==",
+  "dgSpecHash": "Mi7c4eNghLZkw63boLNM2HTITwELWxb7dMIPUQPIBh73Q/yEsy5Z61bdoaAp0DQa/97Yiryqlg/HKMoMg50Jgw==",
   "success": true,
-  "projectFilePath": "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj",
+  "projectFilePath": "D:\\Project Software\\MLF_USSD_Project\\SmsNotification\\SmsNotification.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

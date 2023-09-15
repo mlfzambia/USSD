@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\App Hosting\MLF Ussd API</_PublishTargetUrl>
+    <History>True|2023-09-14T13:56:15.9359712Z;True|2023-09-14T15:55:15.1479408+02:00;True|2023-09-14T12:34:31.7347500+02:00;True|2023-09-14T12:11:55.0160466+02:00;True|2023-09-14T11:16:26.9721272+02:00;True|2023-09-14T11:12:12.0327985+02:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

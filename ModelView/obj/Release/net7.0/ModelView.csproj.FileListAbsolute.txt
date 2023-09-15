@@ -10,3 +10,15 @@ D:\Project Software\MLFZambiaUssd\ModelView\obj\Release\net7.0\ModelView.dll
 D:\Project Software\MLFZambiaUssd\ModelView\obj\Release\net7.0\refint\ModelView.dll
 D:\Project Software\MLFZambiaUssd\ModelView\obj\Release\net7.0\ModelView.pdb
 D:\Project Software\MLFZambiaUssd\ModelView\obj\Release\net7.0\ref\ModelView.dll
+D:\Project Software\MLF_USSD_Project\ModelView\bin\Release\net7.0\ModelView.deps.json
+D:\Project Software\MLF_USSD_Project\ModelView\bin\Release\net7.0\ModelView.dll
+D:\Project Software\MLF_USSD_Project\ModelView\bin\Release\net7.0\ModelView.pdb
+D:\Project Software\MLF_USSD_Project\ModelView\obj\Release\net7.0\ModelView.csproj.AssemblyReference.cache
+D:\Project Software\MLF_USSD_Project\ModelView\obj\Release\net7.0\ModelView.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project Software\MLF_USSD_Project\ModelView\obj\Release\net7.0\ModelView.AssemblyInfoInputs.cache
+D:\Project Software\MLF_USSD_Project\ModelView\obj\Release\net7.0\ModelView.AssemblyInfo.cs
+D:\Project Software\MLF_USSD_Project\ModelView\obj\Release\net7.0\ModelView.csproj.CoreCompileInputs.cache
+D:\Project Software\MLF_USSD_Project\ModelView\obj\Release\net7.0\ModelView.dll
+D:\Project Software\MLF_USSD_Project\ModelView\obj\Release\net7.0\refint\ModelView.dll
+D:\Project Software\MLF_USSD_Project\ModelView\obj\Release\net7.0\ModelView.pdb
+D:\Project Software\MLF_USSD_Project\ModelView\obj\Release\net7.0\ref\ModelView.dll

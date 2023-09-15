@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XJW/aSejVnsqVkIi/Y/n5SPG0ezkiG3GGEoGBnZJKqKyQJfhCDSaYmoxy7yEqHg997hXGC8aOdhzsTZI5GAiyQ==",
+  "dgSpecHash": "33a/7pvbLbppFbcm/dffDZdJNKPNlTdO9f0FLXC2vCaYXSskDj6PocjXcahEgtnRnEjY0Y2PNgRMZIJfbHt4fA==",
   "success": true,
-  "projectFilePath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj",
+  "projectFilePath": "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

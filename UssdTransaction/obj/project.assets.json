@@ -4002,11 +4002,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\UssdTransaction\\UssdTransaction.csproj",
+      "projectUniqueName": "D:\\Project Software\\MLF_USSD_Project\\UssdTransaction\\UssdTransaction.csproj",
       "projectName": "UssdTransaction",
-      "projectPath": "D:\\Project Software\\MLFZambiaUssd\\UssdTransaction\\UssdTransaction.csproj",
+      "projectPath": "D:\\Project Software\\MLF_USSD_Project\\UssdTransaction\\UssdTransaction.csproj",
       "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
-      "outputPath": "D:\\Project Software\\MLFZambiaUssd\\UssdTransaction\\obj\\",
+      "outputPath": "D:\\Project Software\\MLF_USSD_Project\\UssdTransaction\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4028,17 +4028,17 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj": {
-              "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj"
+            "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj": {
+              "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj"
             },
-            "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
-              "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj"
+            "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
+              "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj"
             },
-            "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj": {
-              "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj"
+            "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj": {
+              "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj"
             },
-            "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj": {
-              "projectPath": "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj"
+            "D:\\Project Software\\MLF_USSD_Project\\SmsNotification\\SmsNotification.csproj": {
+              "projectPath": "D:\\Project Software\\MLF_USSD_Project\\SmsNotification\\SmsNotification.csproj"
             }
           }
         }

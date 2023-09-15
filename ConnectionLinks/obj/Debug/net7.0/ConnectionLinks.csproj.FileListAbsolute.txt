@@ -10,3 +10,15 @@ D:\Project Software\MLFZambiaUssd\ConnectionLinks\obj\Debug\net7.0\ConnectionLin
 D:\Project Software\MLFZambiaUssd\ConnectionLinks\obj\Debug\net7.0\refint\ConnectionLinks.dll
 D:\Project Software\MLFZambiaUssd\ConnectionLinks\obj\Debug\net7.0\ConnectionLinks.pdb
 D:\Project Software\MLFZambiaUssd\ConnectionLinks\obj\Debug\net7.0\ref\ConnectionLinks.dll
+D:\Project Software\MLF_USSD_Project\ConnectionLinks\bin\Debug\net7.0\ConnectionLinks.deps.json
+D:\Project Software\MLF_USSD_Project\ConnectionLinks\bin\Debug\net7.0\ConnectionLinks.dll
+D:\Project Software\MLF_USSD_Project\ConnectionLinks\bin\Debug\net7.0\ConnectionLinks.pdb
+D:\Project Software\MLF_USSD_Project\ConnectionLinks\obj\Debug\net7.0\ConnectionLinks.csproj.AssemblyReference.cache
+D:\Project Software\MLF_USSD_Project\ConnectionLinks\obj\Debug\net7.0\ConnectionLinks.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project Software\MLF_USSD_Project\ConnectionLinks\obj\Debug\net7.0\ConnectionLinks.AssemblyInfoInputs.cache
+D:\Project Software\MLF_USSD_Project\ConnectionLinks\obj\Debug\net7.0\ConnectionLinks.AssemblyInfo.cs
+D:\Project Software\MLF_USSD_Project\ConnectionLinks\obj\Debug\net7.0\ConnectionLinks.csproj.CoreCompileInputs.cache
+D:\Project Software\MLF_USSD_Project\ConnectionLinks\obj\Debug\net7.0\ConnectionLinks.dll
+D:\Project Software\MLF_USSD_Project\ConnectionLinks\obj\Debug\net7.0\refint\ConnectionLinks.dll
+D:\Project Software\MLF_USSD_Project\ConnectionLinks\obj\Debug\net7.0\ConnectionLinks.pdb
+D:\Project Software\MLF_USSD_Project\ConnectionLinks\obj\Debug\net7.0\ref\ConnectionLinks.dll

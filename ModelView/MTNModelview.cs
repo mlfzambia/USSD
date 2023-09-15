@@ -80,8 +80,13 @@ namespace ModelView
             public string externalId { get; set; }
             public clientNumberdetails payer { get; set; }
             public string status { get; set; }
-            public Reasondetails reason { get; set; }
+           // public Reasondetails reason { get; set; }
+            public string reason { get; set; }
         }
+
+
+
+
 
         public class clientNumberdetails
         {
@@ -94,6 +99,31 @@ namespace ModelView
             public string code { get; set; }
             public string message { get; set; }
         }
+
+
+        //Mtn Payment Failed verification
+
+        public class MtnPaymentFailedVerificationResponse
+        {
+            public string statusCode { get; set; }
+            public string notification { get; set; }
+            public Mtn_Payment_Failed_Verification verification { get; set; }
+        }
+
+
+        public class Mtn_Payment_Failed_Verification
+        {
+            public string amount { get; set; }
+            public string currency { get; set; }
+           // public string financialTransactionId { get; set; }
+            public string externalId { get; set; }
+            public clientNumberdetails payer { get; set; }
+            public string status { get; set; }
+            public Reasondetails reason { get; set; }
+        }
+
+
+ 
 
     }
 }

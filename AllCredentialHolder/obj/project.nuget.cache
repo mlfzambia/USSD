@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p6TBFjLy+pA4cNkCLnKGXKeQDjVxyD+WwK7qC4HPCQl3JvppAawAOb1rI3DKqEe3n7Z4KYfC7EOonkypbQXcPQ==",
+  "dgSpecHash": "zf9xrfpbRr9KVuILKyWHY+pXz+MQ+lLYXcHFVgW3Df7Wjhbngw9NrwMdwkC02qmPcV2KAjO21JEYqVQmaxnL8w==",
   "success": true,
-  "projectFilePath": "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj",
+  "projectFilePath": "D:\\Project Software\\MLF_USSD_Project\\AllCredentialHolder\\AllCredentialHolder.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

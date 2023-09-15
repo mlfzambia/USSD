@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7t2N4Maa9+mA1mDk5ALJxtAPBt5SBnTmF+GTvKD9E6ByViypoPdWbLiQw71WuQ7a9wPEsKffVV0t/sROYUm/+Q==",
+  "dgSpecHash": "C+QA0USUqToSn7ollz6VJx16+vVw/UjhGvf0Yse+JErqVUphfF4Y8Qv0M+x6a9gJ1EZMcrqmtCLCGXKCtGa/6Q==",
   "success": true,
-  "projectFilePath": "D:\\Project Software\\MLFZambiaUssd\\UssdProcessRequest\\UssdProcessRequest.csproj",
+  "projectFilePath": "D:\\Project Software\\MLF_USSD_Project\\UssdProcessRequest\\UssdProcessRequest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

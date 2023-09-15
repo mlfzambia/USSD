@@ -11,10 +11,18 @@ namespace MusoniRequest
 {
     public class MusoniClientsRequest
     {
-        string DomainNames = "https://api.demo.irl.musoniservices.com/v1/";
+       // string DomainNames = "https://api.live.irl.musoniservices.com/v1/";
         AllCredentialHolder.QuickRefHolder Ref_Client = new AllCredentialHolder.QuickRefHolder();
         ConnectionLinks.LinkDetails LD_Connection = new ConnectionLinks.LinkDetails();
         MtnPaymentProcessing.MTNPayments MTNPayClient = new MtnPaymentProcessing.MTNPayments();
+
+
+        MusoniCredentials MusoniClients = new MusoniCredentials();
+
+
+
+
+
 
         internal async Task<ModelView.SannyResponseMV.SearchDetailsResponse> GetClientDetails(string Phonenumber)
         {
@@ -31,9 +39,9 @@ namespace MusoniRequest
                 //Get basic auth 
                 string BasicAuthResponse = await Task.Run(() => Ref_Client.BaseEncryption(AuthDetailsHolder));
 
-                string ClientDetailsUrl = DomainNames + "search?query=" + Phonenumber + "&exactMatch=true";
+                string ClientDetailsUrl = MusoniClients.MusoniUrl + "search?query=" + Phonenumber + "&exactMatch=true";
 
-                CD_Client.DefaultRequestHeaders.Add("X-Api-Key", "ohZwDcukh07kQmmshh3b73aezkbvpHa03mmwKZnR");
+                CD_Client.DefaultRequestHeaders.Add("X-Api-Key", MusoniClients.MusoniAPIKey);
                 CD_Client.DefaultRequestHeaders.Add("X-Fineract-Platform-Tenantid", "mlfzambia");
                 CD_Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", BasicAuthResponse);
 
@@ -113,6 +121,7 @@ namespace MusoniRequest
 
         }
 
+
         internal async Task<ModelView.SannyResponseMV.ClientLoanBalanceMainDetailResponse> GetClientAccountBalance(string ParentId)
         {
             HttpClient CD_Client = new HttpClient();
@@ -126,9 +135,9 @@ namespace MusoniRequest
                 //Get basic auth 
                 string BasicAuthResponse = await Task.Run(() => Ref_Client.BaseEncryption(AuthDetailsHolder));
 
-                string ClientDetailsUrl = DomainNames + "clients/" + ParentId + "/accounts?fields=loanAccounts";
+                string ClientDetailsUrl = MusoniClients.MusoniUrl + "clients/" + ParentId + "/accounts?fields=loanAccounts";
 
-                CD_Client.DefaultRequestHeaders.Add("x-api-key", "ohZwDcukh07kQmmshh3b73aezkbvpHa03mmwKZnR");
+                CD_Client.DefaultRequestHeaders.Add("x-api-key", MusoniClients.MusoniAPIKey);
                 CD_Client.DefaultRequestHeaders.Add("X-Fineract-Platform-Tenantid", "mlfzambia");
                 CD_Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", BasicAuthResponse);
 
@@ -235,7 +244,7 @@ namespace MusoniRequest
                     dateFormat = "dd MMMM yyyy",
                     locale = "en",
                     note = "Check payment",
-                    paymentTypeId = "230",
+                    paymentTypeId = MusoniClients.MusonipaymentTypeId,
                     receiptNumber = receiptNumber,
                     routingCode = "",
                     transactionAmount = PaymentAmount,
@@ -248,14 +257,11 @@ namespace MusoniRequest
                 string BasicAuthResponse = await Task.Run(() => Ref_Client.BaseEncryption(AuthDetailsHolder));
 
 
-                PR_Client.DefaultRequestHeaders.Add("X-Api-Key", "ohZwDcukh07kQmmshh3b73aezkbvpHa03mmwKZnR");
+                PR_Client.DefaultRequestHeaders.Add("X-Api-Key", MusoniClients.MusoniAPIKey);
                 PR_Client.DefaultRequestHeaders.Add("X-Fineract-Platform-Tenantid", "mlfzambia");
                 PR_Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", BasicAuthResponse);
 
-
-
-
-                string RepaymentDetailsURL = DomainNames + "loans/" + ClientloanId + "/transactions?command=repayment";
+                string RepaymentDetailsURL = MusoniClients.MusoniUrl + "loans/" + ClientloanId + "/transactions?command=repayment";
                 var _repaymentHolder = JsonConvert.SerializeObject(PaymentDetails);
                 StringContent _BuilderContent = new StringContent(_repaymentHolder, Encoding.ASCII, "application/json");
 
@@ -316,11 +322,11 @@ namespace MusoniRequest
                 //Get basic auth 
                 string BasicAuthResponse = await Task.Run(() => Ref_Client.BaseEncryption(AuthDetailsHolder));
 
-                PR_Client.DefaultRequestHeaders.Add("X-Api-Key", "ohZwDcukh07kQmmshh3b73aezkbvpHa03mmwKZnR");
+                PR_Client.DefaultRequestHeaders.Add("X-Api-Key", MusoniClients.MusoniAPIKey);
                 PR_Client.DefaultRequestHeaders.Add("X-Fineract-Platform-Tenantid", "mlfzambia");
                 PR_Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", BasicAuthResponse);
 
-                string AuthRepaymentDetailsURL = DomainNames + "makercheckers/" + CommandId + "?command=approve";
+                string AuthRepaymentDetailsURL = MusoniClients.MusoniUrl + "makercheckers/" + CommandId + "?command=approve";
                 var _repaymentHolder = JsonConvert.SerializeObject(PaymentDetails);
                 StringContent _BuilderContent = new StringContent(_repaymentHolder, Encoding.ASCII, "application/json");
 
@@ -328,6 +334,8 @@ namespace MusoniRequest
 
                 if (RepaymentResponseDetails.StatusCode == HttpStatusCode.OK)
                 {
+                var ResponseDetails=    RepaymentResponseDetails.Content.ReadAsStringAsync().Result;
+
                     PendingApprovalClient = new ModelView.GenralResponseMV.AllGenralResponse()
                     {
                         statusCode = "OT001",

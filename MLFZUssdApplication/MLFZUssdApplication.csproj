@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MLFPortalInformation\MLFPortalInformation.csproj" />
     <ProjectReference Include="..\MtnPaymentProcessing\MtnPaymentProcessing.csproj" />
     <ProjectReference Include="..\MusoniRequest\MusoniRequest.csproj" />
     <ProjectReference Include="..\SecuritySystemCheck\SecuritySystemCheck.csproj" />

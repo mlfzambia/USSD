@@ -13,9 +13,9 @@ namespace UssdTransaction
 
         //Register transaction
 
-        public async Task<ModelView.PaymentTransactionMV.PaymentResponse> ITransactionRegistration(string Clientaccount, string PhoneNumber, int ServiceProvider, decimal Amount, string LoanType, string ClientLoanId)
+        public async Task<ModelView.PaymentTransactionMV.PaymentResponse> ITransactionRegistration(string Clientaccount, string PhoneNumber, int ServiceProvider, decimal Amount, string LoanType, string ClientLoanId, string SessionId)
         {
-            var RegistrationResponse = await Task.Run(() => TrxClient.TransactionRegistration(Clientaccount, PhoneNumber, ServiceProvider, Amount, LoanType,  ClientLoanId));
+            var RegistrationResponse = await Task.Run(() => TrxClient.TransactionRegistration(Clientaccount, PhoneNumber, ServiceProvider, Amount, LoanType, ClientLoanId, SessionId));
             return RegistrationResponse;
         }
 
@@ -27,20 +27,28 @@ namespace UssdTransaction
         }
 
         //Update client account number
-        public async Task<ModelView.GenralResponseMV.AllGenralResponse> IUpdateAccountNumber(string Clientaccount, string SessionId, string AccountHolderName)
+        public async Task<ModelView.GenralResponseMV.AllGenralResponse> IUpdateAccountNumber(string Clientaccount, string SessionId, string AccountHolderName, string PayerPhonenumber)
         {
-            var UpdateAccountnumberResponse = await Task.Run(() => TrxClient.UpdateAccountNumber(Clientaccount, SessionId, AccountHolderName));
+            var UpdateAccountnumberResponse = await Task.Run(() => TrxClient.UpdateAccountNumber(Clientaccount, SessionId, AccountHolderName, PayerPhonenumber));
             return UpdateAccountnumberResponse;
         }
 
         //Complete Payment transaction
-        public async void ICompleteLoanPayment(string SessionId, decimal PaidLoanAmount)
+        public async Task<ModelView.GenralResponseMV.AllGenralResponse> ICompleteLoanPayment(string SessionId, decimal PaidLoanAmount)
         {
-            await Task.Run(() => TrxClient.CompleteLoanPayment(SessionId, PaidLoanAmount));
-            //  return UpdateAccountnumberResponse;
+         var PaymentCompletedStatus =   await Task.Run(() => TrxClient.CompleteLoanPayment(SessionId, PaidLoanAmount));
+             return PaymentCompletedStatus;
         }
 
 
-        //
+        //Verify if payment on any pending transaction
+
+        public async Task<ModelView.GenralResponseMV.AllGenralResponse> IConfirmPendingTransaction()
+        {
+            var ConfirmationResponse = await Task.Run(() => TrxClient.ConfirmPendingTransaction());
+            return ConfirmationResponse;
+        }
+
+
     }
 }

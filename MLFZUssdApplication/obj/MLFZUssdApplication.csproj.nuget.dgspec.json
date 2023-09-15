@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project Software\\MLFZambiaUssd\\MLFZUssdApplication\\MLFZUssdApplication.csproj": {}
+    "D:\\Project Software\\MLF_USSD_Project\\MLFZUssdApplication\\MLFZUssdApplication.csproj": {}
   },
   "projects": {
-    "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj": {
+    "D:\\Project Software\\MLF_USSD_Project\\AllCredentialHolder\\AllCredentialHolder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj",
+        "projectUniqueName": "D:\\Project Software\\MLF_USSD_Project\\AllCredentialHolder\\AllCredentialHolder.csproj",
         "projectName": "AllCredentialHolder",
-        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj",
+        "projectPath": "D:\\Project Software\\MLF_USSD_Project\\AllCredentialHolder\\AllCredentialHolder.csproj",
         "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
-        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\obj\\",
+        "outputPath": "D:\\Project Software\\MLF_USSD_Project\\AllCredentialHolder\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj": {
+    "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj",
+        "projectUniqueName": "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj",
         "projectName": "ConnectionLinks",
-        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj",
+        "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj",
         "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
-        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\obj\\",
+        "outputPath": "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -155,14 +155,87 @@
         }
       }
     },
-    "D:\\Project Software\\MLFZambiaUssd\\MLFZUssdApplication\\MLFZUssdApplication.csproj": {
+    "D:\\Project Software\\MLF_USSD_Project\\MLFPortalInformation\\MLFPortalInformation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\MLFZUssdApplication\\MLFZUssdApplication.csproj",
-        "projectName": "MLFZUssdApplication",
-        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MLFZUssdApplication\\MLFZUssdApplication.csproj",
+        "projectUniqueName": "D:\\Project Software\\MLF_USSD_Project\\MLFPortalInformation\\MLFPortalInformation.csproj",
+        "projectName": "MLFPortalInformation",
+        "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MLFPortalInformation\\MLFPortalInformation.csproj",
         "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
-        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\MLFZUssdApplication\\obj\\",
+        "outputPath": "D:\\Project Software\\MLF_USSD_Project\\MLFPortalInformation\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\telek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj"
+              },
+              "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Project Software\\MLF_USSD_Project\\MLFZUssdApplication\\MLFZUssdApplication.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Project Software\\MLF_USSD_Project\\MLFZUssdApplication\\MLFZUssdApplication.csproj",
+        "projectName": "MLFZUssdApplication",
+        "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MLFZUssdApplication\\MLFZUssdApplication.csproj",
+        "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
+        "outputPath": "D:\\Project Software\\MLF_USSD_Project\\MLFZUssdApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -185,17 +258,20 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\MLFPortalInformation\\MLFPortalInformation.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MLFPortalInformation\\MLFPortalInformation.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\SecuritySystemCheck\\SecuritySystemCheck.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\SecuritySystemCheck\\SecuritySystemCheck.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\UssdProcessRequest\\UssdProcessRequest.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\UssdProcessRequest\\UssdProcessRequest.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\SecuritySystemCheck\\SecuritySystemCheck.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\SecuritySystemCheck\\SecuritySystemCheck.csproj"
+              },
+              "D:\\Project Software\\MLF_USSD_Project\\UssdProcessRequest\\UssdProcessRequest.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\UssdProcessRequest\\UssdProcessRequest.csproj"
               }
             }
           }
@@ -238,14 +314,14 @@
         }
       }
     },
-    "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj": {
+    "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj",
+        "projectUniqueName": "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj",
         "projectName": "ModelView",
-        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj",
+        "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj",
         "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
-        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\obj\\",
+        "outputPath": "D:\\Project Software\\MLF_USSD_Project\\ModelView\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -298,14 +374,14 @@
         }
       }
     },
-    "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
+    "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj",
+        "projectUniqueName": "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj",
         "projectName": "MtnPaymentProcessing",
-        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj",
+        "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj",
         "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
-        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\obj\\",
+        "outputPath": "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -327,11 +403,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\AllCredentialHolder\\AllCredentialHolder.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\AllCredentialHolder\\AllCredentialHolder.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj"
               }
             }
           }
@@ -371,14 +447,14 @@
         }
       }
     },
-    "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj": {
+    "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj",
+        "projectUniqueName": "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj",
         "projectName": "MusoniRequest",
-        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj",
+        "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj",
         "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
-        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\obj\\",
+        "outputPath": "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -400,17 +476,17 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\AllCredentialHolder\\AllCredentialHolder.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\AllCredentialHolder\\AllCredentialHolder.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj"
               }
             }
           }
@@ -454,14 +530,14 @@
         }
       }
     },
-    "D:\\Project Software\\MLFZambiaUssd\\SecuritySystemCheck\\SecuritySystemCheck.csproj": {
+    "D:\\Project Software\\MLF_USSD_Project\\SecuritySystemCheck\\SecuritySystemCheck.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\SecuritySystemCheck\\SecuritySystemCheck.csproj",
+        "projectUniqueName": "D:\\Project Software\\MLF_USSD_Project\\SecuritySystemCheck\\SecuritySystemCheck.csproj",
         "projectName": "SecuritySystemCheck",
-        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\SecuritySystemCheck\\SecuritySystemCheck.csproj",
+        "projectPath": "D:\\Project Software\\MLF_USSD_Project\\SecuritySystemCheck\\SecuritySystemCheck.csproj",
         "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
-        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\SecuritySystemCheck\\obj\\",
+        "outputPath": "D:\\Project Software\\MLF_USSD_Project\\SecuritySystemCheck\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -483,14 +559,14 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\AllCredentialHolder\\AllCredentialHolder.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\AllCredentialHolder\\AllCredentialHolder.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\SmsNotification\\SmsNotification.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\SmsNotification\\SmsNotification.csproj"
               }
             }
           }
@@ -530,14 +606,14 @@
         }
       }
     },
-    "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj": {
+    "D:\\Project Software\\MLF_USSD_Project\\SmsNotification\\SmsNotification.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj",
+        "projectUniqueName": "D:\\Project Software\\MLF_USSD_Project\\SmsNotification\\SmsNotification.csproj",
         "projectName": "SmsNotification",
-        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj",
+        "projectPath": "D:\\Project Software\\MLF_USSD_Project\\SmsNotification\\SmsNotification.csproj",
         "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
-        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\obj\\",
+        "outputPath": "D:\\Project Software\\MLF_USSD_Project\\SmsNotification\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -559,8 +635,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\AllCredentialHolder\\AllCredentialHolder.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\AllCredentialHolder\\AllCredentialHolder.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\AllCredentialHolder\\AllCredentialHolder.csproj"
               }
             }
           }
@@ -600,14 +676,14 @@
         }
       }
     },
-    "D:\\Project Software\\MLFZambiaUssd\\UssdProcessRequest\\UssdProcessRequest.csproj": {
+    "D:\\Project Software\\MLF_USSD_Project\\UssdProcessRequest\\UssdProcessRequest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\UssdProcessRequest\\UssdProcessRequest.csproj",
+        "projectUniqueName": "D:\\Project Software\\MLF_USSD_Project\\UssdProcessRequest\\UssdProcessRequest.csproj",
         "projectName": "UssdProcessRequest",
-        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\UssdProcessRequest\\UssdProcessRequest.csproj",
+        "projectPath": "D:\\Project Software\\MLF_USSD_Project\\UssdProcessRequest\\UssdProcessRequest.csproj",
         "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
-        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\UssdProcessRequest\\obj\\",
+        "outputPath": "D:\\Project Software\\MLF_USSD_Project\\UssdProcessRequest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -629,17 +705,17 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ModelView\\ModelView.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ModelView\\ModelView.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\UssdTransaction\\UssdTransaction.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\UssdTransaction\\UssdTransaction.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\UssdTransaction\\UssdTransaction.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\UssdTransaction\\UssdTransaction.csproj"
               }
             }
           }
@@ -679,14 +755,14 @@
         }
       }
     },
-    "D:\\Project Software\\MLFZambiaUssd\\UssdTransaction\\UssdTransaction.csproj": {
+    "D:\\Project Software\\MLF_USSD_Project\\UssdTransaction\\UssdTransaction.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\UssdTransaction\\UssdTransaction.csproj",
+        "projectUniqueName": "D:\\Project Software\\MLF_USSD_Project\\UssdTransaction\\UssdTransaction.csproj",
         "projectName": "UssdTransaction",
-        "projectPath": "D:\\Project Software\\MLFZambiaUssd\\UssdTransaction\\UssdTransaction.csproj",
+        "projectPath": "D:\\Project Software\\MLF_USSD_Project\\UssdTransaction\\UssdTransaction.csproj",
         "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
-        "outputPath": "D:\\Project Software\\MLFZambiaUssd\\UssdTransaction\\obj\\",
+        "outputPath": "D:\\Project Software\\MLF_USSD_Project\\UssdTransaction\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -708,17 +784,17 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\ConnectionLinks\\ConnectionLinks.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\ConnectionLinks\\ConnectionLinks.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj"
               },
-              "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj": {
-                "projectPath": "D:\\Project Software\\MLFZambiaUssd\\SmsNotification\\SmsNotification.csproj"
+              "D:\\Project Software\\MLF_USSD_Project\\SmsNotification\\SmsNotification.csproj": {
+                "projectPath": "D:\\Project Software\\MLF_USSD_Project\\SmsNotification\\SmsNotification.csproj"
               }
             }
           }

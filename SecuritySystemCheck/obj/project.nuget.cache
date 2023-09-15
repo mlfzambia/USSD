@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/b4gk30TSG+e/xuhu0wVQTv3bPeMhf2bNBRpqMM1VssWwPG/bcO9gbgzmeM5+N/ELWxKBhQVWnbFUFstd0kH5Q==",
+  "dgSpecHash": "903GW/Fj5kcjuXyPCEQyVCxDGvZA6Sai9Iyj8n2Mc5W/ELe8crPKtEjLz1zhfZhPNwhobbj9poIDK2y2UQps+g==",
   "success": true,
-  "projectFilePath": "D:\\Project Software\\MLFZambiaUssd\\SecuritySystemCheck\\SecuritySystemCheck.csproj",
+  "projectFilePath": "D:\\Project Software\\MLF_USSD_Project\\SecuritySystemCheck\\SecuritySystemCheck.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

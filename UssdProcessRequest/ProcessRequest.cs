@@ -21,13 +21,13 @@ namespace UssdProcessRequest
         AllCredentialHolder.QuickRefHolder RHClientHOlder = new AllCredentialHolder.QuickRefHolder();
         UssdTransaction.UssdTransactionAsync Ussd_Trx_Client = new UssdTransaction.UssdTransactionAsync();
 
-       
 
-
-        internal async Task<string> UssdRequestDetails(int IsNewRequest, string MsisdnNumber, string SessionId, string ClientInput)
+        internal async Task<AnySingelAllGenralResponse> UssdRequestDetails(int IsNewRequest, string MsisdnNumber, string SessionId, string ClientInput)
         {
             SqlConnection UR_App_Con = new SqlConnection(ConnectionInfor.localConnectionDatabase());
             string UssdStylesResponse = null;
+
+            ModelView.GenralResponseMV.AnySingelAllGenralResponse _asResponseDetails = null;
 
             try
             {
@@ -61,10 +61,24 @@ namespace UssdProcessRequest
                             "2. Statement\n " +
                             "3. Registration\n" +
                             "99. Logout\n";
+
+                        _asResponseDetails = new AnySingelAllGenralResponse()
+                        {
+                            statusCode = "OT001",
+                            notification = UssdStylesResponse,
+                            responseValue = "FC"
+                        };
                     }
                     else
                     {
                         UssdStylesResponse = "Connection problem or invalid MMI code";
+
+                        _asResponseDetails = new AnySingelAllGenralResponse()
+                        {
+                            statusCode = "OT001",
+                            notification = UssdStylesResponse,
+                            responseValue = "FB"
+                        };
                     }
                 }
                 //Client contiuning ussd process
@@ -105,19 +119,47 @@ namespace UssdProcessRequest
                                 //Show Page One Which is Enter Account
                                 await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "1", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", DBNull.Value.ToString()));
 
+                                _asResponseDetails = new AnySingelAllGenralResponse()
+                                {
+                                    statusCode = "OT001",
+                                    notification = UssdStylesResponse,
+                                    responseValue = "FC"
+                                };
+
                             }
                             else if (ClientInput == "2") //Selected Page Two
                             {
                                 UssdStylesResponse = "Registration coming soon.";
+
+                                _asResponseDetails = new AnySingelAllGenralResponse()
+                                {
+                                    statusCode = "OT001",
+                                    notification = UssdStylesResponse,
+                                    responseValue = "FB"
+                                };
                             }
                             else if (ClientInput == "3") //Selected Page Two
                             {
                                 UssdStylesResponse = "You have successfull logged out.";
+                                _asResponseDetails = new AnySingelAllGenralResponse()
+                                {
+                                    statusCode = "OT001",
+                                    notification = UssdStylesResponse,
+                                    responseValue = "FB"
+                                };
                             }
                             else
                             {
                                 UssdStylesResponse = "Selected Input is invalied";
+
+                                _asResponseDetails = new AnySingelAllGenralResponse()
+                                {
+                                    statusCode = "OT001",
+                                    notification = UssdStylesResponse,
+                                    responseValue = "FB"
+                                };
                             }
+
                             break;
 
                         case 1:
@@ -134,7 +176,7 @@ namespace UssdProcessRequest
                                 string statusCode = ResponseDetails.statusCode;
                                 string notification = ResponseDetails.notification;
 
-                                if (statusCode == "OT001") 
+                                if (statusCode == "OT001")
                                 { //Get client names
 
                                     //Client Id Request
@@ -150,7 +192,7 @@ namespace UssdProcessRequest
                                     string _StatusCode = ClientBalanceResponse.statusCode;
                                     string _notification = ClientBalanceResponse.notification;
                                     string _ClientAccountHolder = ResponseDetails.holder.parentName;
-                                   
+
 
                                     if (statusCode == "OT001")
                                     {
@@ -177,6 +219,8 @@ namespace UssdProcessRequest
                                                 //Update the System with what loan this is
                                                 await Task.Run(() => Ussd_Trx_Client.IAddSessionBalance(SessionId, LoanTypes, LoanBalanceType, _loanCurrentBalance, rowcount, ClientLoanId));
 
+
+
                                             }
                                             else if (LoanTypes.ToUpper() == "TIL")
                                             {
@@ -188,22 +232,38 @@ namespace UssdProcessRequest
 
                                                 //Update the system with what loan this is
                                                 await Task.Run(() => Ussd_Trx_Client.IAddSessionBalance(SessionId, LoanTypes, LoanBalanceType, _loanCurrentBalance, rowcount, ClientLoanId));
-                                            }
 
+
+                                            }
                                         }
+
                                         _sbResponseDetail.Append("0. Back");
 
-                                       UssdStylesResponse = _sbResponseDetail.ToString();
+                                        UssdStylesResponse = _sbResponseDetail.ToString();
                                         //Update Client Page Slection
                                         await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "2", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", DBNull.Value.ToString()));
 
                                         //Update Client Account
-                                       await Task.Run(() => Ussd_Trx_Client.IUpdateAccountNumber(ClientInput, SessionId, _ClientAccountHolder));
+                                        await Task.Run(() => Ussd_Trx_Client.IUpdateAccountNumber(ClientInput, SessionId, _ClientAccountHolder, MsisdnNumber));
+
+                                        _asResponseDetails = new AnySingelAllGenralResponse()
+                                        {
+                                            statusCode = "OT001",
+                                            notification = UssdStylesResponse,
+                                            responseValue = "FC"
+                                        };
+
 
                                     }
                                     else
                                     {
                                         UssdStylesResponse = "You dont have any active loan";
+                                        _asResponseDetails = new AnySingelAllGenralResponse()
+                                        {
+                                            statusCode = "OT001",
+                                            notification = UssdStylesResponse,
+                                            responseValue = "FB"
+                                        };
                                     }
                                 }
                                 else
@@ -212,69 +272,175 @@ namespace UssdProcessRequest
                                         "Please enter your Account again";
                                     //Update Client Page Slection
                                     await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "1", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", DBNull.Value.ToString()));
+
+                                    _asResponseDetails = new AnySingelAllGenralResponse()
+                                    {
+                                        statusCode = "OT001",
+                                        notification = UssdStylesResponse,
+                                        responseValue = "FC"
+                                    };
                                 }
                             }
                             else if (OptionSelected == 2)
                             {
                                 if (ClientInput == "1")
                                 {
-                                    UssdStylesResponse = "Enter loan Amount";
+                                    UssdStylesResponse = "Enter Repayment Amount";
 
                                     //Update client stage to entering amount
                                     await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "3", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", ClientInput));
 
+                                    _asResponseDetails = new AnySingelAllGenralResponse()
+                                    {
+                                        statusCode = "OT001",
+                                        notification = UssdStylesResponse,
+                                        responseValue = "FC"
+                                    };
                                 }
                                 else if (ClientInput == "2")
                                 {
-                                    UssdStylesResponse = "Enter loan Amount";
+                                    UssdStylesResponse = "Enter Repayment Amount";
 
                                     //Update client stage to entering amount
-                                    await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "3", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", "1"));
+                                    await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "3", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", ClientInput));
+
+                                    _asResponseDetails = new AnySingelAllGenralResponse()
+                                    {
+                                        statusCode = "OT001",
+                                        notification = UssdStylesResponse,
+                                        responseValue = "FC"
+                                    };
+                                }
+                                else if (ClientInput == "3")
+                                {
+                                    UssdStylesResponse = "Enter Repayment Amount";
+
+                                    //Update client stage to entering amount
+                                    await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "3", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", ClientInput));
+
+                                    _asResponseDetails = new AnySingelAllGenralResponse()
+                                    {
+                                        statusCode = "OT001",
+                                        notification = UssdStylesResponse,
+                                        responseValue = "FC"
+                                    };
+                                }
+                                else
+                                {
+                                    _asResponseDetails = new AnySingelAllGenralResponse()
+                                    {
+                                        statusCode = "OT001",
+                                        notification = "You can only have three loans running.",
+                                        responseValue = "FC"
+                                    };
 
                                 }
                             }
                             else if (OptionSelected == 3)
                             {
-
                                 decimal EnteredAmount = Convert.ToDecimal(ClientInput);
-                                //Process completed
-                                UssdStylesResponse = "end\n Shortly you will receice a prompt to enter your MoMo PIN";
+                                int TotalAmountCharacters = EnteredAmount.ToString().Length;
 
-                                //await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "4", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", "1"));
+                                if (TotalAmountCharacters <= 5)
+                                {
+                                    //Process completed
+                                    UssdStylesResponse = "Shortly you will receice a prompt to enter your MoMo PIN";
+                                    //await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "4", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", "1"));
 
+                                    Ussd_Trx_Client.ICompleteLoanPayment(SessionId, EnteredAmount);
+                                    // Ussd_Trx_Client.ITransactionRegistration()
 
-                                Ussd_Trx_Client.ICompleteLoanPayment(SessionId, EnteredAmount);
+                                    _asResponseDetails = new AnySingelAllGenralResponse()
+                                    {
+                                        statusCode = "OT001",
+                                        notification = UssdStylesResponse,
+                                        responseValue = "FB"
+                                    };
+                                }
+                                else
+                                {
+                                    StringBuilder ClientMsg = new StringBuilder();
+                                    ClientMsg.Append("You can only enter amounts between 1 and 69999.");
+                                    //ClientMsg.Append("0: Back");
 
-                                // Ussd_Trx_Client.ITransactionRegistration()
+                                    UssdStylesResponse = ClientMsg.ToString();
+
+                                    //Update Transaction
+                                    // await Task.Run(() => RecordInitialTransaction(SessionId, MsisdnNumber, 1, "1", DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), DBNull.Value.ToString(), "0", DBNull.Value.ToString()));
+
+                                    _asResponseDetails = new AnySingelAllGenralResponse()
+                                    {
+                                        statusCode = "OT001",
+                                        notification = UssdStylesResponse,
+                                        responseValue = "FB"
+                                    };
+                                }
+
                             }
                             else
                             {
                                 UssdStylesResponse = "Something went wrong, try again later.";
+                                _asResponseDetails = new AnySingelAllGenralResponse()
+                                {
+                                    statusCode = "OT001",
+                                    notification = UssdStylesResponse,
+                                    responseValue = "FB"
+                                };
                             }
                             break;
 
                         case 2:
                             UssdStylesResponse = "Customer registration coming soon";
+                            _asResponseDetails = new AnySingelAllGenralResponse()
+                            {
+                                statusCode = "OT001",
+                                notification = UssdStylesResponse,
+                                responseValue = "FB"
+                            };
                             break;
                         case 3:
                             UssdStylesResponse = "Customer Statement coming soon";
+                            _asResponseDetails = new AnySingelAllGenralResponse()
+                            {
+                                statusCode = "OT001",
+                                notification = UssdStylesResponse,
+                                responseValue = "FB"
+                            };
                             break;
                         case 99:
                             UssdStylesResponse = "You have successfull logout";
+                            _asResponseDetails = new AnySingelAllGenralResponse()
+                            {
+                                statusCode = "OT001",
+                                notification = UssdStylesResponse,
+                                responseValue = "FB"
+                            };
                             break;
                     }
                 }
                 else
                 {
                     UssdStylesResponse = "Error session";
+                    _asResponseDetails = new AnySingelAllGenralResponse()
+                    {
+                        statusCode = "OT001",
+                        notification = UssdStylesResponse,
+                        responseValue = "FB"
+                    };
                 }
             }
             catch (Exception ex)
             {
                 UssdStylesResponse = "System error or connection problem or invalid MMI code";
+                _asResponseDetails = new AnySingelAllGenralResponse()
+                {
+                    statusCode = "OT001",
+                    notification = UssdStylesResponse,
+                    responseValue = "FB"
+                };
             }
 
-            return UssdStylesResponse;
+            return _asResponseDetails;
         }
 
         #region Add Ussd Transaction details
@@ -306,7 +472,7 @@ namespace UssdProcessRequest
                 }
 
                 var RICount = RI_App_CM.ExecuteNonQuery();
-            
+
                 if (RICount >= 1)
                 {
                     GenralResponse = new ModelView.GenralResponseMV.AllGenralResponse()
@@ -338,8 +504,6 @@ namespace UssdProcessRequest
             }
             return GenralResponse;
         }
-
-
 
         #endregion
     }

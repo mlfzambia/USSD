@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusoniRequest", "..\MusoniR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmsNotification", "..\SmsNotification\SmsNotification.csproj", "{AAFF3DA4-521F-4E9C-A976-4DE7C0EDB204}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecuritySystemCheck", "..\SecuritySystemCheck\SecuritySystemCheck.csproj", "{AAAB2512-C581-43F0-B2D0-67F4C53E5B8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecuritySystemCheck", "..\SecuritySystemCheck\SecuritySystemCheck.csproj", "{AAAB2512-C581-43F0-B2D0-67F4C53E5B8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLFPortalInformation", "..\MLFPortalInformation\MLFPortalInformation.csproj", "{968F9E22-C0E8-4D3C-B3CF-80222FA6840D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{AAAB2512-C581-43F0-B2D0-67F4C53E5B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAAB2512-C581-43F0-B2D0-67F4C53E5B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAAB2512-C581-43F0-B2D0-67F4C53E5B8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{968F9E22-C0E8-4D3C-B3CF-80222FA6840D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{968F9E22-C0E8-4D3C-B3CF-80222FA6840D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{968F9E22-C0E8-4D3C-B3CF-80222FA6840D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{968F9E22-C0E8-4D3C-B3CF-80222FA6840D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

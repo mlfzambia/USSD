@@ -1,0 +1,17 @@
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\bin\Release\net7.0\MLFPortalInformation.deps.json
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\bin\Release\net7.0\MLFPortalInformation.dll
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\bin\Release\net7.0\MLFPortalInformation.pdb
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\bin\Release\net7.0\ConnectionLinks.dll
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\bin\Release\net7.0\ModelView.dll
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\bin\Release\net7.0\ConnectionLinks.pdb
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\bin\Release\net7.0\ModelView.pdb
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\obj\Release\net7.0\MLFPortalInformation.csproj.AssemblyReference.cache
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\obj\Release\net7.0\MLFPortalInformation.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\obj\Release\net7.0\MLFPortalInformation.AssemblyInfoInputs.cache
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\obj\Release\net7.0\MLFPortalInformation.AssemblyInfo.cs
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\obj\Release\net7.0\MLFPortalInformation.csproj.CoreCompileInputs.cache
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\obj\Release\net7.0\MLFPortalInformation.csproj.CopyComplete
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\obj\Release\net7.0\MLFPortalInformation.dll
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\obj\Release\net7.0\refint\MLFPortalInformation.dll
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\obj\Release\net7.0\MLFPortalInformation.pdb
+D:\Project Software\MLF_USSD_Project\MLFPortalInformation\obj\Release\net7.0\ref\MLFPortalInformation.dll

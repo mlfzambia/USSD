@@ -1,13 +1,16 @@
 ﻿using Newtonsoft.Json;
+using System.Data.SqlClient;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
+using static ModelView.MTNModelview;
 
 namespace MtnPaymentProcessing
 {
     public class MTNPayments
     {
         AllCredentialHolder.CreadentialHolder.MTN_Credentials MtnCredentials = new AllCredentialHolder.CreadentialHolder.MTN_Credentials();
+
 
 
         //Request for Token
@@ -97,7 +100,7 @@ namespace MtnPaymentProcessing
 
         //Get Names of the Client number
 
-        public async Task<ModelView.MTNModelview.ClientMsisdn> MtnClientNameDetails(string ClientMsisdn)
+         public async Task<ModelView.MTNModelview.ClientMsisdn> MtnClientNameDetails(string ClientMsisdn)
         {
             ModelView.MTNModelview.ClientMsisdn CMMsisdnClient = null;
 
@@ -121,7 +124,7 @@ namespace MtnPaymentProcessing
                     string Sub_Key = MtnCredentials.SubcriptionKey;
                     string TargetEnv = MtnCredentials.Production;
 
-                    CND_App_Client.DefaultRequestHeaders.Add("Authorization", "Basic " + Auth_Token);
+                    CND_App_Client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Auth_Token);
                     CND_App_Client.DefaultRequestHeaders.Add("X-Target-Environment", TargetEnv);
                     CND_App_Client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", Sub_Key);
 
@@ -177,11 +180,10 @@ namespace MtnPaymentProcessing
 
             return CMMsisdnClient;
         }
-
-
+         
 
         //MTN Request to pay transaction
-        public async Task<ModelView.GenralResponseMV.AnySingelAllGenralResponse> Request_To_Pay(decimal amount, string narration, string phonenumber,string TransactionUuid, string Tranx_Receipt_Num)
+        public async Task<ModelView.GenralResponseMV.AnySingelAllGenralResponse> Request_To_Pay(decimal amount, string narration, string phonenumber, string TransactionUuid, string Tranx_Receipt_Num)
         {
             ModelView.GenralResponseMV.AnySingelAllGenralResponse General_Response_client = null;
 
@@ -242,7 +244,7 @@ namespace MtnPaymentProcessing
                         {
                             statusCode = "OT001",
                             notification = "Transaction registered",
-                              responseValue = TransactionUuid
+                            responseValue = TransactionUuid
                         };
                     }
                     else
@@ -303,10 +305,12 @@ namespace MtnPaymentProcessing
 
                     var VerificationResponse = await Task.Run(() => RP_Client.GetAsync(Transaction_Verification_Url));
                     var VerificationContent = VerificationResponse.Content.ReadAsStringAsync().Result;
-                    var PaymentVerificationDetails = JsonConvert.DeserializeObject<ModelView.MTNModelview.Mtn_Payment_Verification>(VerificationContent);
+                   var PaymentVerificationDetails = JsonConvert.DeserializeObject<ModelView.MTNModelview.Mtn_Payment_Verification>(VerificationContent);
 
                     if (VerificationResponse.StatusCode == HttpStatusCode.OK)
                     {
+                     
+
                         //Check payment status
 
                         Mtn_Verification_Response = new ModelView.MTNModelview.MtnPaymentVerificationResponse()
@@ -325,23 +329,23 @@ namespace MtnPaymentProcessing
                                     partyId = PaymentVerificationDetails.payer.partyId
                                 },
                                 status = PaymentVerificationDetails.status,
-                                //reason = new ModelView.MTNModelview.Reasondetails()
-                                //{
-                                //    code = PaymentVerificationDetails.reason.code,
-                                //    message = PaymentVerificationDetails.reason.message
-                                //}
+                                reason= PaymentVerificationDetails.reason
+
                             }
                         };
                     }
                     else
                     {
+                       // var PaymentVerificationDetails = JsonConvert.DeserializeObject<ModelView.MTNModelview.Mtn_Payment_Verification>(VerificationContent);
+
                         Mtn_Verification_Response = new ModelView.MTNModelview.MtnPaymentVerificationResponse()
                         {
                             statusCode = "OT002",
                             notification = "Verification failed",
                             verification = new ModelView.MTNModelview.Mtn_Payment_Verification()
                             {
-                                status = PaymentVerificationDetails.status
+                                status = PaymentVerificationDetails.status,
+                                reason = PaymentVerificationDetails.reason
                             }
                         };
                     }
@@ -369,6 +373,78 @@ namespace MtnPaymentProcessing
         }
 
 
+       // Get Client MSISDN
+        public async Task<ModelView.MTNModelview.ClientMsisdn> ClientMsisdnInformation(string ClientNumber)
+        {
+            HttpClient CMT_Client = new HttpClient();
+            ModelView.MTNModelview.ClientMsisdn _clientMsisdn = null;
+
+            try
+            {
+                //Get New Token 
+                var NewTokenRequest = await Task.Run(() => MtnAccessToken());
+
+                string _ntrStatusCode = NewTokenRequest.statusCode;
+                string _ntrNotification = NewTokenRequest.notification;
+
+                if (_ntrStatusCode == "OT001")
+                {
+                    string AuthCode = NewTokenRequest.details.access_token;
+
+                    string SubScriptionKey = MtnCredentials.SubcriptionKey;
+                    string Target_env = MtnCredentials.Production;
+
+                    string MtnDomainUrl = MtnCredentials.MtnDomainUrl;
+                    string ClientUserInforUrls = MtnDomainUrl + "collection/v1_0/accountholder/msisdn/" + ClientNumber + "/basicuserinfo/";
+
+                    CMT_Client.DefaultRequestHeaders.Add("X-Target-Environment", Target_env);
+                    CMT_Client.DefaultRequestHeaders.Add("Authorization", "Bearer " + AuthCode);
+                    CMT_Client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", SubScriptionKey);
+
+                    var _cmtResponseDetails = await Task.Run(() => CMT_Client.GetAsync(ClientUserInforUrls));
+                    var ClientInformation = _cmtResponseDetails.Content.ReadAsStringAsync().Result;
+                    var DeserInformation = JsonConvert.DeserializeObject<ModelView.MTNModelview.ClientMsisdn>(ClientInformation);
+
+
+                    _clientMsisdn = new ModelView.MTNModelview.ClientMsisdn()
+                    {
+                        statusCode = "OT001",
+                        notification = "Client Names found",
+                        information = new ModelView.MTNModelview.ClientMsisdnInformation()
+                        {
+                            birthdate = DeserInformation.information.birthdate,
+                            family_name = DeserInformation.information.family_name,
+                            gender = DeserInformation.information.gender,
+                            given_name = DeserInformation.information.given_name,
+                            locale = DeserInformation.information.locale,
+                            status = DeserInformation.information.status
+                        },
+                    };
+                }
+                else
+                {
+                    _clientMsisdn = new ModelView.MTNModelview.ClientMsisdn()
+                    {
+                        statusCode = "OT001",
+                        notification = "Client Names not found"
+                    };
+                }
+            }
+            catch (Exception Ex)
+            {
+                _clientMsisdn = new ModelView.MTNModelview.ClientMsisdn()
+                {
+                    statusCode = "OT099",
+                    notification = "System error, contact system administrator"
+                };
+            }
+
+            return _clientMsisdn;
+
+        }
+
+
+     
 
     }
 }

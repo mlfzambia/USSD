@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "45NVciuY6pvaLrSLM72z3qnBY1i5mRObbggGlEj18Ehrag/syoTEXpDO9pKLUqmcwJINhWYqGNDa49Zj8R2a2A==",
+  "dgSpecHash": "+SCKumw85HDbDD7mEvIPGTKJ5fnwSzQGxduV6xLsoppLWDvP0fRfII1NC3HhL3eZzBv/jDlBo40NIuMsuBsjdA==",
   "success": true,
-  "projectFilePath": "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj",
+  "projectFilePath": "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\telek\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

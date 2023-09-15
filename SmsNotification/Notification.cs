@@ -8,6 +8,11 @@ namespace SmsNotification
     {
         AllCredentialHolder.CreadentialHolder.SmsDetails Sms_Client = new AllCredentialHolder.CreadentialHolder.SmsDetails();
 
+        public delegate void del_Sms_Notification(string PhoneNumber, string SmsBody);
+        public event del_Sms_Notification EventNotification;
+
+
+
         public async Task<ModelView.GenralResponseMV.SMS_Final_Notification_Response> SendSmsNotification(string ClientNumber, string SmsBody)
         {
             ModelView.GenralResponseMV.SMS_Final_Notification_Response NotificationResponse = null;
@@ -26,7 +31,7 @@ namespace SmsNotification
                     string _smsStatusCode = SmsContentResponse.Status_Code;
                     string _notification = SmsContentResponse.Msg_Notification;
 
-                    if (_smsStatusCode == "OT001")
+                    if (_smsStatusCode == "SFNR001")
                     {
                         NotificationResponse = new ModelView.GenralResponseMV.SMS_Final_Notification_Response()
                         {
@@ -65,6 +70,14 @@ namespace SmsNotification
             return NotificationResponse;
         }
 
+
+        public void OnSmsNotification(string PhoneNumber, string SmsBody)
+        {
+            if (EventNotification != null)
+            {
+                EventNotification(PhoneNumber, SmsBody);
+            }
+        }
 
     }
 }

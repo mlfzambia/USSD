@@ -1188,6 +1188,21 @@
           "bin/placeholder/ConnectionLinks.dll": {}
         }
       },
+      "MLFPortalInformation/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "ConnectionLinks": "1.0.0",
+          "ModelView": "1.0.0",
+          "System.Data.SqlClient": "4.8.5"
+        },
+        "compile": {
+          "bin/placeholder/MLFPortalInformation.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MLFPortalInformation.dll": {}
+        }
+      },
       "ModelView/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -4015,6 +4030,11 @@
       "path": "../ConnectionLinks/ConnectionLinks.csproj",
       "msbuildProject": "../ConnectionLinks/ConnectionLinks.csproj"
     },
+    "MLFPortalInformation/1.0.0": {
+      "type": "project",
+      "path": "../MLFPortalInformation/MLFPortalInformation.csproj",
+      "msbuildProject": "../MLFPortalInformation/MLFPortalInformation.csproj"
+    },
     "ModelView/1.0.0": {
       "type": "project",
       "path": "../ModelView/ModelView.csproj",
@@ -4053,6 +4073,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "MLFPortalInformation >= 1.0.0",
       "MtnPaymentProcessing >= 1.0.0",
       "MusoniRequest >= 1.0.0",
       "SecuritySystemCheck >= 1.0.0",
@@ -4067,11 +4088,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project Software\\MLFZambiaUssd\\MLFZUssdApplication\\MLFZUssdApplication.csproj",
+      "projectUniqueName": "D:\\Project Software\\MLF_USSD_Project\\MLFZUssdApplication\\MLFZUssdApplication.csproj",
       "projectName": "MLFZUssdApplication",
-      "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MLFZUssdApplication\\MLFZUssdApplication.csproj",
+      "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MLFZUssdApplication\\MLFZUssdApplication.csproj",
       "packagesPath": "C:\\Users\\telek\\.nuget\\packages\\",
-      "outputPath": "D:\\Project Software\\MLFZambiaUssd\\MLFZUssdApplication\\obj\\",
+      "outputPath": "D:\\Project Software\\MLF_USSD_Project\\MLFZUssdApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4094,17 +4115,20 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
-              "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj"
+            "D:\\Project Software\\MLF_USSD_Project\\MLFPortalInformation\\MLFPortalInformation.csproj": {
+              "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MLFPortalInformation\\MLFPortalInformation.csproj"
             },
-            "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj": {
-              "projectPath": "D:\\Project Software\\MLFZambiaUssd\\MusoniRequest\\MusoniRequest.csproj"
+            "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj": {
+              "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MtnPaymentProcessing\\MtnPaymentProcessing.csproj"
             },
-            "D:\\Project Software\\MLFZambiaUssd\\SecuritySystemCheck\\SecuritySystemCheck.csproj": {
-              "projectPath": "D:\\Project Software\\MLFZambiaUssd\\SecuritySystemCheck\\SecuritySystemCheck.csproj"
+            "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj": {
+              "projectPath": "D:\\Project Software\\MLF_USSD_Project\\MusoniRequest\\MusoniRequest.csproj"
             },
-            "D:\\Project Software\\MLFZambiaUssd\\UssdProcessRequest\\UssdProcessRequest.csproj": {
-              "projectPath": "D:\\Project Software\\MLFZambiaUssd\\UssdProcessRequest\\UssdProcessRequest.csproj"
+            "D:\\Project Software\\MLF_USSD_Project\\SecuritySystemCheck\\SecuritySystemCheck.csproj": {
+              "projectPath": "D:\\Project Software\\MLF_USSD_Project\\SecuritySystemCheck\\SecuritySystemCheck.csproj"
+            },
+            "D:\\Project Software\\MLF_USSD_Project\\UssdProcessRequest\\UssdProcessRequest.csproj": {
+              "projectPath": "D:\\Project Software\\MLF_USSD_Project\\UssdProcessRequest\\UssdProcessRequest.csproj"
             }
           }
         }
